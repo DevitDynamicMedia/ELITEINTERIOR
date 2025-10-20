@@ -138,6 +138,78 @@
             width: 100%;
         }
         
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--bg-dark);
+            border-left: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 5rem 2rem 2rem;
+            transition: var(--transition-medium);
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .mobile-nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition-medium);
+        }
+        
+        .mobile-nav-links a:hover,
+        .mobile-nav-links a.active {
+            color: var(--accent-gold);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-medium);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
         /* Header */
         .page-header {
             padding: 10rem 2rem 5rem;
@@ -707,27 +779,7 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .container {
-                max-width: 1140px;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .container {
-                max-width: 960px;
-            }
-            
-            .page-header h1 {
-                font-size: 3rem;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-        }
-        
+        /* Mobile Styles */
         @media (max-width: 768px) {
             .container {
                 max-width: 720px;
@@ -742,17 +794,79 @@
                 font-size: 2.5rem;
             }
             
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
             .nav-links {
                 display: none;
             }
             
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .gallery-filters {
+                padding: 1.5rem 1rem;
+                top: 60px;
+            }
+            
+            .filter-tabs {
+                gap: 0.5rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            
+            .filter-tabs::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .filter-tab {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+                flex-shrink: 0;
+            }
+            
+            .gallery-section {
+                padding: 2rem 1rem 3rem;
+            }
+            
             .gallery-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .gallery-image {
+                height: 240px;
+            }
+            
+            .gallery-overlay {
+                padding: 1.5rem;
+                opacity: 1;
+                background: linear-gradient(to top, rgba(10, 10, 10, 0.95), transparent 60%);
+            }
+            
+            .gallery-title {
+                font-size: 1.1rem;
+            }
+            
+            .gallery-zoom {
+                opacity: 1;
+                transform: scale(1);
+                top: 0.75rem;
+                right: 0.75rem;
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
             }
             
             .lightbox-nav {
                 width: 40px;
                 height: 40px;
+                font-size: 0.9rem;
             }
             
             .lightbox-prev {
@@ -763,8 +877,61 @@
                 right: 1rem;
             }
             
+            .lightbox-close {
+                top: -45px;
+                right: 0;
+                width: 36px;
+                height: 36px;
+            }
+            
+            .lightbox-info {
+                padding: 1.25rem;
+            }
+            
+            .lightbox-title {
+                font-size: 1.25rem;
+            }
+            
+            .cta-section {
+                padding: 3rem 1.5rem;
+            }
+            
             .cta-section h2 {
                 font-size: 2rem;
+            }
+            
+            .cta-section p {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn {
+                padding: 0.875rem 2rem;
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            footer {
+                padding: 3rem 1.5rem 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .mobile-nav {
+                padding: 5rem 1.5rem 2rem;
             }
         }
         
@@ -782,32 +949,125 @@
                 font-size: 2rem;
             }
             
-            .gallery-section {
-                padding: 2rem 1rem 3rem;
+            .page-header p {
+                font-size: 1rem;
             }
             
-            .filter-tabs {
-                gap: 0.5rem;
+            .gallery-filters {
+                padding: 1rem;
             }
             
             .filter-tab {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
             }
             
-            .btn {
-                padding: 0.875rem 2rem;
+            .gallery-section {
+                padding: 1.5rem 0.5rem;
             }
             
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .gallery-image {
+                height: 220px;
             }
             
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
+            .gallery-overlay {
+                padding: 1.25rem;
+            }
+            
+            .gallery-title {
+                font-size: 1rem;
+            }
+            
+            .gallery-location {
+                font-size: 0.8rem;
+            }
+            
+            .lightbox-content {
+                max-width: 95%;
+            }
+            
+            .lightbox-nav {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .lightbox-prev {
+                left: 0.5rem;
+            }
+            
+            .lightbox-next {
+                right: 0.5rem;
+            }
+            
+            .lightbox-info {
+                padding: 1rem;
+            }
+            
+            .lightbox-title {
+                font-size: 1.1rem;
+            }
+            
+            .lightbox-description {
+                font-size: 0.85rem;
+            }
+            
+            .cta-section {
+                padding: 2.5rem 1rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.75rem;
+            }
+            
+            footer {
+                padding: 2.5rem 1rem 1rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.25rem;
+            }
+            
+            .filter-tab {
+                padding: 0.75rem 0.875rem;
+                font-size: 0.8rem;
+            }
+            
+            .gallery-image {
+                height: 200px;
+            }
+        }
+        
+        /* Touch improvements */
+        @media (hover: none) {
+            .gallery-item:hover {
+                transform: none;
+                border-color: var(--border-color);
+            }
+            
+            .gallery-item:hover .gallery-image {
+                transform: none;
+            }
+            
+            .gallery-item:active {
+                border-color: rgba(212, 165, 116, 0.5);
+            }
+            
+            .btn:hover {
+                transform: none;
+            }
+            
+            .btn:active {
+                transform: scale(0.98);
             }
         }
     </style>
@@ -827,8 +1087,23 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="gallery.html" class="active">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
 
     <!-- Header -->
     <section class="page-header">
@@ -1076,6 +1351,25 @@
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
         const filterTabs = document.querySelectorAll('.filter-tab');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
 
         // Initialize gallery
         function initGallery() {
