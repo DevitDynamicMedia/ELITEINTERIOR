@@ -138,6 +138,78 @@
             width: 100%;
         }
         
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--bg-dark);
+            border-left: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 5rem 2rem 2rem;
+            transition: var(--transition-medium);
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .mobile-nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition-medium);
+        }
+        
+        .mobile-nav-links a:hover,
+        .mobile-nav-links a.active {
+            color: var(--accent-gold);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-medium);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
         /* Hero Section */
         .hero {
             padding: 14rem 2rem 8rem;
@@ -227,6 +299,9 @@
             letter-spacing: 0.05em;
             position: relative;
             overflow: hidden;
+            font-size: 1rem;
+            min-height: 56px; /* Better touch target */
+            justify-content: center;
         }
         
         .btn::before {
@@ -499,6 +574,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            padding: 0.5rem 0; /* Better touch target */
         }
         
         .footer-section a:hover {
@@ -605,16 +681,50 @@
                 display: none;
             }
             
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .section-header h2 {
                 font-size: 2rem;
             }
             
             .btn {
                 padding: 0.875rem 2rem;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
             }
             
             .grid-4 {
                 grid-template-columns: 1fr;
+            }
+            
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-card-content {
+                padding: 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
         
@@ -630,21 +740,75 @@
             
             .hero h1 {
                 font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
             
             .section {
                 padding: 4rem 1rem;
             }
             
-            .btn-container {
-                flex-direction: column;
-                align-items: center;
+            .section-header {
+                margin-bottom: 3rem;
             }
             
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .section-header p {
+                font-size: 1rem;
+            }
+            
+            .category-card h3 {
+                font-size: 1.25rem;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.25rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            footer {
+                padding: 3rem 1rem 1.5rem;
+            }
+            
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .mobile-nav {
+                padding: 5rem 1.5rem 2rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.25rem;
+            }
+            
+            .category-image {
+                height: 220px;
             }
         }
     </style>
@@ -664,8 +828,23 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -861,6 +1040,26 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
         });
 
         // Scroll animation for elements
