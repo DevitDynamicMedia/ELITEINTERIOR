@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Elite Interior</title>
+    <title>About Us - Elite Interior | Premium Wall Panels Albania</title>
     <meta name="description" content="Learn about Elite Interior, Albania's leading provider of premium wall panels and luxury interior solutions.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -18,18 +19,27 @@
             --text-primary: #ffffff;
             --text-muted: #a0a0a0;
             --accent-gold: #d4a574;
+            --accent-gold-light: #e6b98a;
             --border-color: #2a2a2a;
+            --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-medium: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -41,35 +51,54 @@
             left: 0;
             right: 0;
             background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-color);
-            z-index: 100;
+            z-index: 1000;
             padding: 1rem 0;
+            transition: var(--transition-medium);
+        }
+        
+        nav.scrolled {
+            padding: 0.75rem 0;
+            background: rgba(10, 10, 10, 0.98);
         }
         
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.75rem;
+            font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-medium);
+        }
+        
+        .logo:hover {
+            transform: translateY(-2px);
         }
         
         .logo span {
             color: var(--accent-gold);
         }
         
+        .logo-icon {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+        }
+        
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
         
@@ -77,75 +106,302 @@
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            position: relative;
+            transition: var(--transition-medium);
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: var(--transition-medium);
         }
         
         .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
             color: var(--accent-gold);
         }
         
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        /* Header */
         .page-header {
-            padding: 8rem 2rem 4rem;
+            padding: 10rem 2rem 5rem;
             text-align: center;
-            background: rgba(26, 26, 26, 0.3);
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(10, 10, 10, 0.95)), 
+                        url('https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(10, 10, 10, 0.9) 70%);
+            z-index: 1;
+        }
+        
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         .page-header h1 {
-            font-size: 3rem;
-            font-weight: bold;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s var(--transition-slow) forwards;
         }
         
         .accent {
             color: var(--accent-gold);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .accent::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0.7;
         }
         
         .page-header p {
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
-            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s var(--transition-slow) 0.2s forwards;
         }
         
-        .section {
-            padding: 5rem 2rem;
+        /* Capabilities Section */
+        .capabilities-section {
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
         }
         
-        .content-section {
-            max-width: 900px;
-            margin: 0 auto;
+        .capabilities-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.05) 0%, transparent 50%);
+            z-index: -1;
         }
         
-        .content-section p {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        
-        .value-card {
+        .section-header {
             text-align: center;
-            padding: 2rem;
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .capability-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: 1rem;
-            transition: border-color 0.3s;
+            padding: 3rem 2rem;
+            transition: var(--transition-medium);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s, var(--transition-medium);
+            position: relative;
+            overflow: hidden;
         }
         
-        .value-card:hover {
+        .capability-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.05), transparent);
+            transition: var(--transition-slow);
+        }
+        
+        .capability-card:hover::before {
+            left: 100%;
+        }
+        
+        .capability-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .capability-card:hover {
             border-color: rgba(212, 165, 116, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .value-icon {
+        .capability-icon {
+            width: 5rem;
+            height: 5rem;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            transition: var(--transition-medium);
+            position: relative;
+        }
+        
+        .capability-card:hover .capability-icon {
+            background: rgba(212, 165, 116, 0.2);
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .capability-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .capability-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .capability-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .capability-features li {
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition-medium);
+        }
+        
+        .capability-features li:hover {
+            color: var(--text-primary);
+        }
+        
+        .capability-features li i {
+            color: var(--accent-gold);
+            font-size: 0.875rem;
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 6rem 2rem;
+            background: rgba(26, 26, 26, 0.3);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            counter-reset: step;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            transition: var(--transition-medium);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s, var(--transition-medium);
+            position: relative;
+            counter-increment: step;
+        }
+        
+        .process-step::before {
+            content: counter(step);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+        }
+        
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .process-step:hover {
+            border-color: rgba(212, 165, 116, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .step-icon {
             width: 4rem;
             height: 4rem;
             background: rgba(212, 165, 116, 0.1);
@@ -154,70 +410,286 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 2rem;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            transition: var(--transition-medium);
         }
         
-        .value-card h3 {
+        .process-step:hover .step-icon {
+            background: rgba(212, 165, 116, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .process-step h3 {
             font-size: 1.25rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
         
-        .value-card p {
+        .process-step p {
             color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Materials Section */
+        .materials-section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .materials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(212, 165, 116, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .material-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: var(--transition-medium);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s, var(--transition-medium);
+        }
+        
+        .material-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .material-card:hover {
+            border-color: rgba(212, 165, 116, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .material-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+        
+        .material-card:hover .material-image {
+            transform: scale(1.05);
+        }
+        
+        .material-content {
+            padding: 2rem;
+        }
+        
+        .material-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .material-content h3 i {
+            color: var(--accent-gold);
+        }
+        
+        .material-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .material-features {
+            list-style: none;
+        }
+        
+        .material-features li {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .material-features li i {
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 2rem;
+            background: rgba(26, 26, 26, 0.5);
+            text-align: center;
         }
         
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
         .stat {
             text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .stat.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
+            font-size: 3.5rem;
+            font-weight: 700;
             color: var(--accent-gold);
             margin-bottom: 0.5rem;
+            display: block;
         }
         
         .stat-label {
-            font-size: 0.875rem;
+            font-size: 1rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
         
-        .section-title {
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 3rem;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(10, 10, 10, 0.9));
         }
         
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .cta-section.visible h2,
+        .cta-section.visible p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .cta-section.visible .cta-buttons {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: var(--transition-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition-medium);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.5);
+            transform: translateY(-5px);
+            background: var(--accent-gold-light);
+        }
+        
+        .btn-secondary {
+            border: 2px solid var(--accent-gold);
+            color: var(--text-primary);
+            background: transparent;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212, 165, 116, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
         footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
-            padding: 3rem 2rem 1.5rem;
-            margin-top: 4rem;
+            padding: 4rem 2rem 2rem;
         }
         
         .footer-content {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
         
         .footer-section h3 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--accent-gold);
+            font-size: 1.25rem;
         }
         
         .footer-section ul {
@@ -228,12 +700,40 @@
             color: var(--text-muted);
             text-decoration: none;
             display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s;
+            margin-bottom: 0.75rem;
+            transition: var(--transition-medium);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .footer-section a:hover {
             color: var(--accent-gold);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--text-muted);
+            transition: var(--transition-medium);
+        }
+        
+        .social-link:hover {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
         }
         
         .footer-bottom {
@@ -241,132 +741,381 @@
             padding-top: 2rem;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+            
+            .page-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
         }
         
         @media (max-width: 768px) {
+            .container {
+                max-width: 720px;
+                padding: 0 1.5rem;
+            }
+            
+            .page-header {
+                padding: 8rem 1.5rem 4rem;
+            }
+            
             .page-header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
             .nav-links {
                 display: none;
             }
             
-            .stat-number {
-                font-size: 2.5rem;
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .capabilities-grid,
+            .process-steps,
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+            
+            .page-header {
+                padding: 7rem 1rem 3rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .capabilities-section,
+            .process-section,
+            .materials-section,
+            .stats-section,
+            .cta-section {
+                padding: 4rem 1rem;
+            }
+            
+            .btn {
+                padding: 0.875rem 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <nav>
+    <!-- Navigation -->
+    <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Elite <span>Interior</span></a>
+            <a href="index.html" class="logo">
+                <i class="fas fa-cubes logo-icon"></i>
+                Elite <span>Interior</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html" style="color: var(--accent-gold);">About</a></li>
+                <li><a href="about.html" class="active">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Header -->
     <section class="page-header">
-        <div class="container">
+        <div class="page-header-content">
             <h1>About <span class="accent">Elite Interior</span></h1>
-            <p>Albania's leading provider of premium wall panels, bringing European elegance and quality to your spaces since our establishment.</p>
+            <p>Albania's premier provider of premium wall panels and luxury interior solutions. Discover how we transform spaces with European quality and craftsmanship.</p>
         </div>
     </section>
 
-    <section class="section">
-        <div class="content-section">
-            <p>Elite Interior was founded with a vision to transform Albanian interiors with world-class wall paneling solutions. We understand that walls are more than just boundaries—they're canvases for your creativity and expressions of your style.</p>
-            
-            <p>Our journey began with a passion for exceptional design and quality craftsmanship. Today, we're proud to offer Albania's most comprehensive selection of premium wall panels, from elegant wooden slats to sophisticated high-gloss finishes.</p>
-            
-            <p>Each product in our collection is carefully selected for its quality, durability, and aesthetic appeal. We work with leading European manufacturers to ensure our clients receive nothing but the finest materials and finishes.</p>
-        </div>
-    </section>
-
-    <section class="section" style="background: rgba(26, 26, 26, 0.3);">
+    <!-- Capabilities Section -->
+    <section class="capabilities-section">
         <div class="container">
-            <h2 class="section-title">Our <span class="accent">Values</span></h2>
+            <div class="section-header" id="capabilitiesHeader">
+                <h2>What We <span class="accent">Offer</span></h2>
+                <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">Comprehensive interior solutions tailored to your vision and requirements</p>
+            </div>
             
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">🏆</div>
-                    <h3>Quality First</h3>
-                    <p>We never compromise on quality. Every product meets our rigorous standards.</p>
+            <div class="capabilities-grid">
+                <div class="capability-card" id="capability1">
+                    <div class="capability-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3>Custom Design Solutions</h3>
+                    <p>Tailored wall panel designs that perfectly match your space, style, and functional requirements.</p>
+                    <ul class="capability-features">
+                        <li><i class="fas fa-check"></i> Personalized design consultations</li>
+                        <li><i class="fas fa-check"></i> 3D visualization of your space</li>
+                        <li><i class="fas fa-check"></i> Material and finish recommendations</li>
+                        <li><i class="fas fa-check"></i> Custom color matching</li>
+                    </ul>
                 </div>
                 
-                <div class="value-card">
-                    <div class="value-icon">👥</div>
-                    <h3>Customer Focus</h3>
-                    <p>Your satisfaction is our priority. We're here to bring your vision to life.</p>
+                <div class="capability-card" id="capability2">
+                    <div class="capability-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3>Professional Installation</h3>
+                    <p>Expert installation services ensuring perfect fit, finish, and long-lasting results.</p>
+                    <ul class="capability-features">
+                        <li><i class="fas fa-check"></i> Certified installation teams</li>
+                        <li><i class="fas fa-check"></i> Precision cutting and fitting</li>
+                        <li><i class="fas fa-check"></i> Clean, dust-free installation process</li>
+                        <li><i class="fas fa-check"></i> Quality assurance inspections</li>
+                    </ul>
                 </div>
                 
-                <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <h3>Precision</h3>
-                    <p>Attention to detail in every aspect, from selection to installation.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">✨</div>
-                    <h3>Innovation</h3>
-                    <p>Constantly updating our collection with the latest designs and trends.</p>
+                <div class="capability-card" id="capability3">
+                    <div class="capability-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Technical Expertise</h3>
+                    <p>Advanced technical solutions for complex installations and specialized requirements.</p>
+                    <ul class="capability-features">
+                        <li><i class="fas fa-check"></i> Acoustic panel installation</li>
+                        <li><i class="fas fa-check"></i> Moisture-resistant solutions</li>
+                        <li><i class="fas fa-check"></i> Integrated lighting systems</li>
+                        <li><i class="fas fa-check"></i> Custom joinery and detailing</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header" id="processHeader">
+                <h2>Our <span class="accent">Process</span></h2>
+                <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">A streamlined approach to delivering exceptional results for every project</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step" id="step1">
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Consultation</h3>
+                    <p>We begin by understanding your vision, requirements, and budget to create the perfect solution for your space.</p>
+                </div>
+                
+                <div class="process-step" id="step2">
+                    <div class="step-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Design & Planning</h3>
+                    <p>Our design team creates detailed plans and 3D visualizations, helping you visualize the final result.</p>
+                </div>
+                
+                <div class="process-step" id="step3">
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Material Selection</h3>
+                    <p>Choose from our extensive collection of premium materials, finishes, and colors that suit your style.</p>
+                </div>
+                
+                <div class="process-step" id="step4">
+                    <div class="step-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Installation</h3>
+                    <p>Our expert installation team ensures precise fitting and finishing, with minimal disruption to your space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section class="materials-section">
+        <div class="container">
+            <div class="section-header" id="materialsHeader">
+                <h2>Premium <span class="accent">Materials</span></h2>
+                <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">We work with the finest materials from leading European manufacturers</p>
+            </div>
+            
+            <div class="materials-grid">
+                <div class="material-card" id="material1">
+                    <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600" alt="Slat Wall Panels" class="material-image">
+                    <div class="material-content">
+                        <h3><i class="fas fa-tree"></i> Natural Wood Slats</h3>
+                        <p>Elegant wooden slat panels that bring warmth and natural beauty to any interior space.</p>
+                        <ul class="material-features">
+                            <li><i class="fas fa-check"></i> Available in 8 wood types</li>
+                            <li><i class="fas fa-check"></i> Custom stain options</li>
+                            <li><i class="fas fa-check"></i> Durable and long-lasting</li>
+                            <li><i class="fas fa-check"></i> Easy maintenance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="material-card" id="material2">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600" alt="High Gloss Panels" class="material-image">
+                    <div class="material-content">
+                        <h3><i class="fas fa-gem"></i> High Gloss MDF</h3>
+                        <p>Luxurious high-gloss finishes that create stunning visual impact and reflect light beautifully.</p>
+                        <ul class="material-features">
+                            <li><i class="fas fa-check"></i> 8 color options available</li>
+                            <li><i class="fas fa-check"></i> Scratch and stain resistant</li>
+                            <li><i class="fas fa-check"></i> Easy to clean surface</li>
+                            <li><i class="fas fa-check"></i> Modern and sophisticated</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="material-card" id="material3">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600" alt="Techno Matt Panels" class="material-image">
+                    <div class="material-content">
+                        <h3><i class="fas fa-square"></i> Techno Matt Finishes</h3>
+                        <p>Contemporary matte surfaces that provide a sophisticated, understated elegance to interiors.</p>
+                        <ul class="material-features">
+                            <li><i class="fas fa-check"></i> 6 modern color options</li>
+                            <li><i class="fas fa-check"></i> Fingerprint resistant</li>
+                            <li><i class="fas fa-check"></i> Durable and practical</li>
+                            <li><i class="fas fa-check"></i> Minimalist aesthetic</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Happy Clients</div>
+                <div class="stat" id="stat1">
+                    <span class="stat-number">500+</span>
+                    <div class="stat-label">Projects Completed</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">30+</div>
-                    <div class="stat-label">Products</div>
+                <div class="stat" id="stat2">
+                    <span class="stat-number">30+</span>
+                    <div class="stat-label">Product Varieties</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Projects</div>
+                <div class="stat" id="stat3">
+                    <span class="stat-number">98%</span>
+                    <div class="stat-label">Client Satisfaction</div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Satisfaction</div>
+                <div class="stat" id="stat4">
+                    <span class="stat-number">5</span>
+                    <div class="stat-label">Years Experience</div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="cta-section" id="ctaSection">
+        <div class="container">
+            <h2>Ready to Transform <span class="accent">Your Space?</span></h2>
+            <p>Let's discuss your project and bring your vision to life with our premium wall panels and expert installation services.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary">
+                    <span>Start Your Project</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="gallery.html" class="btn btn-secondary">
+                    <span>View Our Work</span>
+                    <i class="fas fa-images"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Elite Interior</h3>
-                <p style="color: var(--text-muted);">Albania's premier provider of luxury wall panels and interior solutions.</p>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Albania's premier provider of luxury wall panels and interior solutions.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
             </div>
             
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h3>Contact</h3>
                 <ul>
-                    <li style="color: var(--text-muted);">Rruga e Durrësit, Tirana</li>
-                    <li style="color: var(--text-muted);">+355 69 XXX XXXX</li>
-                    <li><a href="mailto:info@eliteinterior.al">info@eliteinterior.al</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Rruga e Durrësit, Tirana</a></li>
+                    <li><a href="tel:+355690000000"><i class="fas fa-phone"></i> +355 69 XXX XXXX</a></li>
+                    <li><a href="mailto:info@eliteinterior.al"><i class="fas fa-envelope"></i> info@eliteinterior.al</a></li>
                 </ul>
             </div>
         </div>
@@ -375,5 +1124,145 @@
             <p>&copy; 2025 Elite Interior. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animation for elements
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85
+            );
+        }
+
+        function handleScrollAnimation() {
+            // Capabilities section
+            const capabilitiesHeader = document.getElementById('capabilitiesHeader');
+            const capability1 = document.getElementById('capability1');
+            const capability2 = document.getElementById('capability2');
+            const capability3 = document.getElementById('capability3');
+            
+            if (isElementInViewport(capabilitiesHeader)) {
+                capabilitiesHeader.classList.add('visible');
+            }
+            
+            if (isElementInViewport(capability1)) {
+                capability1.classList.add('visible');
+            }
+            
+            if (isElementInViewport(capability2)) {
+                capability2.classList.add('visible');
+            }
+            
+            if (isElementInViewport(capability3)) {
+                capability3.classList.add('visible');
+            }
+            
+            // Process section
+            const processHeader = document.getElementById('processHeader');
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+            const step4 = document.getElementById('step4');
+            
+            if (isElementInViewport(processHeader)) {
+                processHeader.classList.add('visible');
+            }
+            
+            if (isElementInViewport(step1)) {
+                step1.classList.add('visible');
+            }
+            
+            if (isElementInViewport(step2)) {
+                step2.classList.add('visible');
+            }
+            
+            if (isElementInViewport(step3)) {
+                step3.classList.add('visible');
+            }
+            
+            if (isElementInViewport(step4)) {
+                step4.classList.add('visible');
+            }
+            
+            // Materials section
+            const materialsHeader = document.getElementById('materialsHeader');
+            const material1 = document.getElementById('material1');
+            const material2 = document.getElementById('material2');
+            const material3 = document.getElementById('material3');
+            
+            if (isElementInViewport(materialsHeader)) {
+                materialsHeader.classList.add('visible');
+            }
+            
+            if (isElementInViewport(material1)) {
+                material1.classList.add('visible');
+            }
+            
+            if (isElementInViewport(material2)) {
+                material2.classList.add('visible');
+            }
+            
+            if (isElementInViewport(material3)) {
+                material3.classList.add('visible');
+            }
+            
+            // Stats section
+            const stat1 = document.getElementById('stat1');
+            const stat2 = document.getElementById('stat2');
+            const stat3 = document.getElementById('stat3');
+            const stat4 = document.getElementById('stat4');
+            
+            if (isElementInViewport(stat1)) {
+                stat1.classList.add('visible');
+                
+                // Animate counters
+                animateCounter('stat1', 0, 500, 2000);
+                animateCounter('stat2', 0, 30, 2000);
+                animateCounter('stat3', 0, 98, 2000);
+                animateCounter('stat4', 0, 5, 2000);
+            }
+            
+            // CTA section
+            const ctaSection = document.getElementById('ctaSection');
+            if (isElementInViewport(ctaSection)) {
+                ctaSection.classList.add('visible');
+            }
+        }
+
+        // Animate number counters
+        function animateCounter(elementId, start, end, duration) {
+            const element = document.getElementById(elementId).querySelector('.stat-number');
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (elementId === 'stat3' ? '%' : (elementId === 'stat4' ? '' : '+'));
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Initialize scroll animation
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('load', handleScrollAnimation);
+        
+        // Initial check on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            handleScrollAnimation();
+        });
+    </script>
 </body>
 </html>
