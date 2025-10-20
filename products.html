@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Elite Interior</title>
-    <meta name="description" content="Browse our complete collection of 30+ premium wall panels including slat, high gloss, soft touch, and techno matt finishes.">
+    <title>Products - Elite Interior | Premium Wall Panels</title>
+    <meta name="description" content="Browse our complete collection of 30+ premium wall panels including slat, high gloss, soft touch, and techno matt finishes with multiple color options.">
     <style>
         * {
             margin: 0;
@@ -151,8 +151,8 @@
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
             max-width: 1280px;
             margin: 0 auto;
         }
@@ -171,10 +171,47 @@
             transform: translateY(-5px);
         }
         
-        .product-image {
+        .product-image-container {
+            position: relative;
             width: 100%;
             height: 280px;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            transition: opacity 0.3s;
+        }
+        
+        .product-color-options {
+            position: absolute;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0 1rem;
+        }
+        
+        .color-option {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.2);
+        }
+        
+        .color-option.active {
+            border-color: var(--accent-gold);
+            transform: scale(1.2);
         }
         
         .product-content {
@@ -193,6 +230,13 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+        }
+        
+        .product-specs {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
         }
         
         .product-price {
@@ -254,6 +298,10 @@
             
             .nav-links {
                 display: none;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -336,73 +384,449 @@
 
     <script>
         const products = [
-            { name: "Oak Slat Panel", category: "Slat Wall Panels", type: "slat", price: "45", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" },
-            { name: "Walnut Slat Panel", category: "Slat Wall Panels", type: "slat", price: "48", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" },
-            { name: "Ash Slat Panel", category: "Slat Wall Panels", type: "slat", price: "42", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" },
-            { name: "Teak Slat Panel", category: "Slat Wall Panels", type: "slat", price: "52", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" },
-            { name: "Pine Slat Panel", category: "Slat Wall Panels", type: "slat", price: "38", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" },
-            { name: "Maple Slat Panel", category: "Slat Wall Panels", type: "slat", price: "46", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" },
-            { name: "Cherry Slat Panel", category: "Slat Wall Panels", type: "slat", price: "50", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" },
-            { name: "Mahogany Slat Panel", category: "Slat Wall Panels", type: "slat", price: "55", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400" },
+            { 
+                name: "Oak Slat Panel", 
+                category: "Slat Wall Panels", 
+                type: "slat", 
+                price: "45", 
+                specs: "18.6cm x 2.5cm x 290cm",
+                colors: [
+                    { name: "Natural Oak", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#d4b896" },
+                    { name: "Dark Oak", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#5d4037" },
+                    { name: "Gray Oak", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#8d6e63" }
+                ]
+            },
+            { 
+                name: "Walnut Slat Panel", 
+                category: "Slat Wall Panels", 
+                type: "slat", 
+                price: "48", 
+                specs: "18.6cm x 2.5cm x 290cm",
+                colors: [
+                    { name: "Rich Walnut", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#5d4037" },
+                    { name: "Light Walnut", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#a1887f" },
+                    { name: "Smoked Walnut", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#4e342e" }
+                ]
+            },
+            { 
+                name: "Ash Slat Panel", 
+                category: "Slat Wall Panels", 
+                type: "slat", 
+                price: "42", 
+                specs: "18.6cm x 2.5cm x 290cm",
+                colors: [
+                    { name: "Natural Ash", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#e0e0e0" },
+                    { name: "White Ash", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#f5f5f5" },
+                    { name: "Gray Ash", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#9e9e9e" }
+                ]
+            },
+            { 
+                name: "Teak Slat Panel", 
+                category: "Slat Wall Panels", 
+                type: "slat", 
+                price: "52", 
+                specs: "18.6cm x 2.5cm x 290cm",
+                colors: [
+                    { name: "Golden Teak", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#bcaaa4" },
+                    { name: "Dark Teak", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#6d4c41" },
+                    { name: "Natural Teak", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#8d6e63" }
+                ]
+            },
+            { 
+                name: "Pine Slat Panel", 
+                category: "Slat Wall Panels", 
+                type: "slat", 
+                price: "38", 
+                specs: "18.6cm x 2.5cm x 290cm",
+                colors: [
+                    { name: "Natural Pine", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#d7ccc8" },
+                    { name: "Light Pine", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#efebe9" },
+                    { name: "Honey Pine", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#bcaaa4" }
+                ]
+            },
+            { 
+                name: "Maple Slat Panel", 
+                category: "Slat Wall Panels", 
+                type: "slat", 
+                price: "46", 
+                specs: "18.6cm x 2.5cm x 290cm",
+                colors: [
+                    { name: "Natural Maple", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#e0e0e0" },
+                    { name: "White Maple", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#f5f5f5" },
+                    { name: "Gray Maple", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#9e9e9e" }
+                ]
+            },
+            { 
+                name: "Cherry Slat Panel", 
+                category: "Slat Wall Panels", 
+                type: "slat", 
+                price: "50", 
+                specs: "18.6cm x 2.5cm x 290cm",
+                colors: [
+                    { name: "Rich Cherry", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#5d4037" },
+                    { name: "Dark Cherry", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#3e2723" },
+                    { name: "Natural Cherry", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#6d4c41" }
+                ]
+            },
+            { 
+                name: "Mahogany Slat Panel", 
+                category: "Slat Wall Panels", 
+                type: "slat", 
+                price: "55", 
+                specs: "18.6cm x 2.5cm x 290cm",
+                colors: [
+                    { name: "Dark Mahogany", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#3e2723" },
+                    { name: "Rich Mahogany", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#4e342e" },
+                    { name: "Natural Mahogany", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#5d4037" }
+                ]
+            },
             
-            { name: "Gloss White Panel", category: "High Gloss MDF Panels", type: "gloss", price: "35", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400" },
-            { name: "Gloss Black Panel", category: "High Gloss MDF Panels", type: "gloss", price: "35", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400" },
-            { name: "Gloss Red Panel", category: "High Gloss MDF Panels", type: "gloss", price: "38", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400" },
-            { name: "Gloss Blue Panel", category: "High Gloss MDF Panels", type: "gloss", price: "38", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400" },
-            { name: "Gloss Green Panel", category: "High Gloss MDF Panels", type: "gloss", price: "38", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400" },
-            { name: "Gloss Gray Panel", category: "High Gloss MDF Panels", type: "gloss", price: "36", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400" },
-            { name: "Gloss Cream Panel", category: "High Gloss MDF Panels", type: "gloss", price: "37", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400" },
-            { name: "Gloss Beige Panel", category: "High Gloss MDF Panels", type: "gloss", price: "37", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400" },
+            { 
+                name: "Gloss White Panel", 
+                category: "High Gloss MDF Panels", 
+                type: "gloss", 
+                price: "35", 
+                specs: "60cm x 0.9cm",
+                colors: [
+                    { name: "Pure White", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#ffffff" },
+                    { name: "Pearl White", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#f5f5f5" },
+                    { name: "Ivory White", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#f8f8f8" }
+                ]
+            },
+            { 
+                name: "Gloss Black Panel", 
+                category: "High Gloss MDF Panels", 
+                type: "gloss", 
+                price: "35", 
+                specs: "60cm x 0.9cm",
+                colors: [
+                    { name: "Jet Black", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#000000" },
+                    { name: "Charcoal Black", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#212121" },
+                    { name: "Graphite Black", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#424242" }
+                ]
+            },
+            { 
+                name: "Gloss Red Panel", 
+                category: "High Gloss MDF Panels", 
+                type: "gloss", 
+                price: "38", 
+                specs: "60cm x 0.9cm",
+                colors: [
+                    { name: "Crimson Red", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#d32f2f" },
+                    { name: "Burgundy Red", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#c2185b" },
+                    { name: "Ruby Red", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#e53935" }
+                ]
+            },
+            { 
+                name: "Gloss Blue Panel", 
+                category: "High Gloss MDF Panels", 
+                type: "gloss", 
+                price: "38", 
+                specs: "60cm x 0.9cm",
+                colors: [
+                    { name: "Navy Blue", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#1976d2" },
+                    { name: "Royal Blue", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#303f9f" },
+                    { name: "Sapphire Blue", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#2962ff" }
+                ]
+            },
+            { 
+                name: "Gloss Green Panel", 
+                category: "High Gloss MDF Panels", 
+                type: "gloss", 
+                price: "38", 
+                specs: "60cm x 0.9cm",
+                colors: [
+                    { name: "Emerald Green", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#388e3c" },
+                    { name: "Forest Green", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#2e7d32" },
+                    { name: "Jade Green", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#4caf50" }
+                ]
+            },
+            { 
+                name: "Gloss Gray Panel", 
+                category: "High Gloss MDF Panels", 
+                type: "gloss", 
+                price: "36", 
+                specs: "60cm x 0.9cm",
+                colors: [
+                    { name: "Silver Gray", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#9e9e9e" },
+                    { name: "Charcoal Gray", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#616161" },
+                    { name: "Slate Gray", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#757575" }
+                ]
+            },
+            { 
+                name: "Gloss Cream Panel", 
+                category: "High Gloss MDF Panels", 
+                type: "gloss", 
+                price: "37", 
+                specs: "60cm x 0.9cm",
+                colors: [
+                    { name: "Vanilla Cream", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#f5f5dc" },
+                    { name: "Ivory Cream", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#fffff0" },
+                    { name: "Beige Cream", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#f5f5f5" }
+                ]
+            },
+            { 
+                name: "Gloss Beige Panel", 
+                category: "High Gloss MDF Panels", 
+                type: "gloss", 
+                price: "37", 
+                specs: "60cm x 0.9cm",
+                colors: [
+                    { name: "Sand Beige", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#f5deb3" },
+                    { name: "Taupe Beige", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#d2b48c" },
+                    { name: "Cream Beige", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#f5f5dc" }
+                ]
+            },
             
-            { name: "Soft Touch Black", category: "Soft Touch MDF Panels", type: "soft", price: "40", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" },
-            { name: "Soft Touch White", category: "Soft Touch MDF Panels", type: "soft", price: "40", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" },
-            { name: "Soft Touch Gray", category: "Soft Touch MDF Panels", type: "soft", price: "40", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" },
-            { name: "Soft Touch Navy", category: "Soft Touch MDF Panels", type: "soft", price: "42", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" },
-            { name: "Soft Touch Anthracite", category: "Soft Touch MDF Panels", type: "soft", price: "42", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" },
-            { name: "Soft Touch Taupe", category: "Soft Touch MDF Panels", type: "soft", price: "41", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" },
-            { name: "Soft Touch Sand", category: "Soft Touch MDF Panels", type: "soft", price: "41", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" },
-            { name: "Soft Touch Charcoal", category: "Soft Touch MDF Panels", type: "soft", price: "43", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400" },
+            { 
+                name: "Soft Touch Black", 
+                category: "Soft Touch MDF Panels", 
+                type: "soft", 
+                price: "40", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Matte Black", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#212121" },
+                    { name: "Charcoal Black", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#424242" },
+                    { name: "Graphite Black", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#37474f" }
+                ]
+            },
+            { 
+                name: "Soft Touch White", 
+                category: "Soft Touch MDF Panels", 
+                type: "soft", 
+                price: "40", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Matte White", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#fafafa" },
+                    { name: "Pearl White", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#f5f5f5" },
+                    { name: "Ivory White", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#fffff0" }
+                ]
+            },
+            { 
+                name: "Soft Touch Gray", 
+                category: "Soft Touch MDF Panels", 
+                type: "soft", 
+                price: "40", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Stone Gray", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#9e9e9e" },
+                    { name: "Silver Gray", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#bdbdbd" },
+                    { name: "Slate Gray", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#607d8b" }
+                ]
+            },
+            { 
+                name: "Soft Touch Navy", 
+                category: "Soft Touch MDF Panels", 
+                type: "soft", 
+                price: "42", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Deep Navy", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#0d47a1" },
+                    { name: "Midnight Navy", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#1565c0" },
+                    { name: "Royal Navy", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#1976d2" }
+                ]
+            },
+            { 
+                name: "Soft Touch Anthracite", 
+                category: "Soft Touch MDF Panels", 
+                type: "soft", 
+                price: "42", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Dark Anthracite", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#263238" },
+                    { name: "Medium Anthracite", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#37474f" },
+                    { name: "Light Anthracite", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#455a64" }
+                ]
+            },
+            { 
+                name: "Soft Touch Taupe", 
+                category: "Soft Touch MDF Panels", 
+                type: "soft", 
+                price: "41", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Warm Taupe", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#8d6e63" },
+                    { name: "Cool Taupe", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#a1887f" },
+                    { name: "Dark Taupe", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#6d4c41" }
+                ]
+            },
+            { 
+                name: "Soft Touch Sand", 
+                category: "Soft Touch MDF Panels", 
+                type: "soft", 
+                price: "41", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Beige Sand", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#d7ccc8" },
+                    { name: "Warm Sand", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#bcaaa4" },
+                    { name: "Light Sand", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#efebe9" }
+                ]
+            },
+            { 
+                name: "Soft Touch Charcoal", 
+                category: "Soft Touch MDF Panels", 
+                type: "soft", 
+                price: "43", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Deep Charcoal", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#424242" },
+                    { name: "Medium Charcoal", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#616161" },
+                    { name: "Light Charcoal", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#757575" }
+                ]
+            },
             
-            { name: "Techno Matt Gray", category: "Techno Matt MDF Panels", type: "techno", price: "38", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400" },
-            { name: "Techno Matt White", category: "Techno Matt MDF Panels", type: "techno", price: "38", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400" },
-            { name: "Techno Matt Black", category: "Techno Matt MDF Panels", type: "techno", price: "38", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400" },
-            { name: "Techno Matt Silver", category: "Techno Matt MDF Panels", type: "techno", price: "40", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400" },
-            { name: "Techno Matt Bronze", category: "Techno Matt MDF Panels", type: "techno", price: "42", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400" },
-            { name: "Techno Matt Graphite", category: "Techno Matt MDF Panels", type: "techno", price: "39", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400" }
+            { 
+                name: "Techno Matt Gray", 
+                category: "Techno Matt MDF Panels", 
+                type: "techno", 
+                price: "38", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Graphite Gray", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#37474f" },
+                    { name: "Slate Gray", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#455a64" },
+                    { name: "Stone Gray", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#546e7a" }
+                ]
+            },
+            { 
+                name: "Techno Matt White", 
+                category: "Techno Matt MDF Panels", 
+                type: "techno", 
+                price: "38", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Pure White", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#ffffff" },
+                    { name: "Pearl White", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#f5f5f5" },
+                    { name: "Ivory White", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#fffff0" }
+                ]
+            },
+            { 
+                name: "Techno Matt Black", 
+                category: "Techno Matt MDF Panels", 
+                type: "techno", 
+                price: "38", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Jet Black", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#000000" },
+                    { name: "Charcoal Black", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#212121" },
+                    { name: "Graphite Black", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#263238" }
+                ]
+            },
+            { 
+                name: "Techno Matt Beige", 
+                category: "Techno Matt MDF Panels", 
+                type: "techno", 
+                price: "39", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Sand Beige", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#d7ccc8" },
+                    { name: "Warm Beige", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#bcaaa4" },
+                    { name: "Light Beige", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#efebe9" }
+                ]
+            },
+            { 
+                name: "Techno Matt Blue", 
+                category: "Techno Matt MDF Panels", 
+                type: "techno", 
+                price: "40", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Navy Blue", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#0d47a1" },
+                    { name: "Steel Blue", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#1565c0" },
+                    { name: "Sky Blue", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#1976d2" }
+                ]
+            },
+            { 
+                name: "Techno Matt Green", 
+                category: "Techno Matt MDF Panels", 
+                type: "techno", 
+                price: "40", 
+                specs: "122cm x 280cm",
+                colors: [
+                    { name: "Forest Green", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#2e7d32" },
+                    { name: "Olive Green", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#558b2f" },
+                    { name: "Sage Green", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#689f38" }
+                ]
+            }
         ];
 
-        let currentFilter = 'all';
-
-        function renderProducts() {
-            const grid = document.getElementById('productsGrid');
-            const filtered = currentFilter === 'all' 
-                ? products 
-                : products.filter(p => p.type === currentFilter);
+        // Function to render products
+        function renderProducts(productsToRender) {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
             
-            grid.innerHTML = filtered.map(product => `
-                <div class="product-card">
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
+            productsToRender.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-type', product.type);
+                
+                const firstColor = product.colors[0];
+                
+                productCard.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${firstColor.image}" alt="${product.name} - ${firstColor.name}" class="product-image" id="productImage-${index}">
+                        <div class="product-color-options">
+                            ${product.colors.map((color, colorIndex) => `
+                                <div class="color-option ${colorIndex === 0 ? 'active' : ''}" 
+                                     style="background-color: ${color.colorCode}"
+                                     data-image="${color.image}"
+                                     data-product-index="${index}"
+                                     data-color-index="${colorIndex}"></div>
+                            `).join('')}
+                        </div>
+                    </div>
                     <div class="product-content">
                         <div class="product-category">${product.category}</div>
                         <h3 class="product-name">${product.name}</h3>
+                        <div class="product-specs">${product.specs}</div>
                         <div class="product-price">€${product.price}</div>
                     </div>
-                </div>
-            `).join('');
-        }
-
-        function filterProducts(type) {
-            currentFilter = type;
-            
-            document.querySelectorAll('.filter-tab').forEach(tab => {
-                tab.classList.remove('active');
+                `;
+                
+                productsGrid.appendChild(productCard);
             });
-            event.target.classList.add('active');
             
-            renderProducts();
+            // Add event listeners to color options
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const productIndex = this.getAttribute('data-product-index');
+                    const colorIndex = this.getAttribute('data-color-index');
+                    const imageUrl = this.getAttribute('data-image');
+                    
+                    // Update the product image
+                    document.getElementById(`productImage-${productIndex}`).src = imageUrl;
+                    
+                    // Update active state
+                    document.querySelectorAll(`[data-product-index="${productIndex}"]`).forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
         }
-
-        renderProducts();
+        
+        // Function to filter products
+        function filterProducts(type) {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            filterTabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.includes(type.charAt(0).toUpperCase() + type.slice(1)) || 
+                    (type === 'all' && tab.textContent.includes('All Products'))) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            if (type === 'all') {
+                renderProducts(products);
+            } else {
+                const filteredProducts = products.filter(product => product.type === type);
+                renderProducts(filteredProducts);
+            }
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts(products);
+        });
     </script>
 </body>
 </html>
