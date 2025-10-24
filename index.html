@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Interior - Premium Wall Panels Albania | Luxury Interior Solutions</title>
-    <meta name="description" content="Elite Interior offers Albania's finest collection of premium wall panels. Discover high-gloss, soft touch, techno matt MDF panels and natural slat designs for luxury interiors.">
+    <title>Elite Interior | Premium Wall Panels Albania</title>
+    <meta name="description" content="Transform your space with Albania's finest collection of luxury wall panels. Elegant designs, premium quality, custom solutions.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         :root {
             --bg-dark: #0a0a0a;
             --bg-secondary: #1a1a1a;
@@ -25,26 +20,40 @@
             --transition-medium: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
-        /* Navigation */
+
+        /* Modern Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -54,15 +63,15 @@
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
             transition: var(--transition-medium);
         }
-        
+
         nav.scrolled {
-            padding: 0.75rem 0;
+            padding: 0.8rem 0;
             background: rgba(10, 10, 10, 0.98);
         }
-        
+
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -71,37 +80,37 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
-        .logo {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
+
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
             transition: var(--transition-medium);
         }
-        
-        .logo:hover {
-            transform: translateY(-2px);
-        }
-        
-        .logo span {
+
+        .logo-text span {
             color: var(--accent-gold);
         }
-        
-        .logo-icon {
-            color: var(--accent-gold);
-            font-size: 1.5rem;
-        }
-        
+
         .nav-links {
             display: flex;
             gap: 2.5rem;
             list-style: none;
         }
-        
+
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -110,7 +119,7 @@
             transition: var(--transition-medium);
             padding: 0.5rem 0;
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -121,23 +130,23 @@
             background: var(--accent-gold);
             transition: var(--transition-medium);
         }
-        
+
         .nav-links a:hover {
             color: var(--text-primary);
         }
-        
+
         .nav-links a:hover::after {
             width: 100%;
         }
-        
+
         .nav-links a.active {
             color: var(--accent-gold);
         }
-        
+
         .nav-links a.active::after {
             width: 100%;
         }
-        
+
         /* Mobile Navigation */
         .mobile-menu-btn {
             display: none;
@@ -148,13 +157,18 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            transition: var(--transition-medium);
         }
-        
+
+        .mobile-menu-btn:hover {
+            color: var(--accent-gold);
+        }
+
         .mobile-nav {
             position: fixed;
             top: 0;
             right: -100%;
-            width: 80%;
+            width: 85%;
             max-width: 320px;
             height: 100vh;
             background: var(--bg-dark);
@@ -164,34 +178,43 @@
             transition: var(--transition-medium);
             overflow-y: auto;
         }
-        
+
         .mobile-nav.active {
             right: 0;
         }
-        
+
         .mobile-nav-links {
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
-        
+
         .mobile-nav-links a {
             color: var(--text-muted);
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: 500;
             display: block;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
             transition: var(--transition-medium);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        
+
+        .mobile-nav-links a i {
+            width: 20px;
+            text-align: center;
+        }
+
         .mobile-nav-links a:hover,
         .mobile-nav-links a.active {
             color: var(--accent-gold);
+            background: rgba(212, 165, 116, 0.1);
         }
-        
+
         .overlay {
             position: fixed;
             top: 0;
@@ -204,106 +227,96 @@
             visibility: hidden;
             transition: var(--transition-medium);
         }
-        
+
         .overlay.active {
             opacity: 1;
             visibility: visible;
         }
-        
-        /* Hero Section */
-        .hero {
-            padding: 14rem 2rem 8rem;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(10, 10, 10, 0.95)), 
-                        url('https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200') center/cover no-repeat;
+
+        /* MODERN HERO SECTION - COMPLETELY REDESIGNED */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(10, 10, 10, 0.9) 70%);
-            z-index: 1;
-        }
-        
-        .hero-content {
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             position: relative;
             z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
         }
-        
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s var(--transition-slow) forwards;
+
+        .hero-content {
+            padding: 2rem 0;
         }
-        
-        .hero .accent {
-            color: var(--accent-gold);
-            position: relative;
+
+        .hero-badge {
             display: inline-block;
+            background: rgba(212, 165, 116, 0.1);
+            color: var(--accent-gold);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(212, 165, 116, 0.2);
         }
-        
-        .hero .accent::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            opacity: 0.7;
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .hero p {
-            font-size: 1.35rem;
+
+        .hero-subtitle {
+            font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s var(--transition-slow) 0.2s forwards;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            line-height: 1.6;
         }
-        
-        .btn-container {
+
+        .hero-actions {
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s var(--transition-slow) 0.4s forwards;
+            gap: 1.25rem;
+            margin-bottom: 3rem;
         }
-        
+
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.25rem;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             transition: var(--transition-medium);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             position: relative;
             overflow: hidden;
-            font-size: 1rem;
-            min-height: 56px; /* Better touch target */
+            font-size: 0.95rem;
+            min-height: 56px;
             justify-content: center;
+            border: none;
+            cursor: pointer;
         }
-        
+
         .btn::before {
             content: '';
             position: absolute;
@@ -314,39 +327,178 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: var(--transition-medium);
         }
-        
+
         .btn:hover::before {
             left: 100%;
         }
-        
+
         .btn-primary {
             background: var(--accent-gold);
             color: var(--bg-dark);
             box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
         }
-        
+
         .btn-primary:hover {
             box-shadow: 0 15px 40px rgba(212, 165, 116, 0.5);
             transform: translateY(-5px);
             background: var(--accent-gold-light);
         }
-        
+
         .btn-secondary {
             border: 2px solid var(--accent-gold);
             color: var(--text-primary);
             background: transparent;
         }
-        
+
         .btn-secondary:hover {
             background: rgba(212, 165, 116, 0.1);
             transform: translateY(-5px);
         }
-        
-        /* Categories Section */
-        .section {
-            padding: 6rem 2rem;
+
+        .hero-features {
+            display: flex;
+            gap: 2rem;
         }
-        
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .feature-text strong {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 1.5rem;
+            object-fit: cover;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            transition: var(--transition-slow);
+            position: relative;
+            z-index: 2;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            z-index: 3;
+            transition: var(--transition-medium);
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-card:nth-child(2) {
+            top: 20%;
+            right: 0;
+            width: 200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 20%;
+            left: 0;
+            width: 180px;
+            animation: float 7s ease-in-out infinite 1s;
+        }
+
+        .floating-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .card-text {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.05);
+            filter: blur(40px);
+        }
+
+        .bg-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+        }
+
+        .bg-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            right: 15%;
+        }
+
+        /* Modern Section Styles */
+        .section {
+            padding: 8rem 2rem;
+        }
+
         .section-header {
             text-align: center;
             margin-bottom: 5rem;
@@ -354,87 +506,96 @@
             transform: translateY(30px);
             transition: opacity 0.8s, transform 0.8s;
         }
-        
+
         .section-header.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .section-header h2 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
         }
-        
+
         .section-header p {
             font-size: 1.25rem;
             color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
+        /* Modern Grid Layout */
         .grid {
             display: grid;
             gap: 2.5rem;
         }
-        
+
         .grid-4 {
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         }
-        
+
         .grid-3 {
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         }
-        
+
+        /* Modern Category Cards */
+        .categories-section {
+            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-secondary));
+        }
+
         .category-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             overflow: hidden;
             transition: var(--transition-medium);
             cursor: pointer;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s, transform 0.8s, var(--transition-medium);
+            position: relative;
         }
-        
+
         .category-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .category-card:hover {
             border-color: var(--accent-gold);
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
         }
-        
+
         .category-image {
             width: 100%;
             height: 280px;
             object-fit: cover;
             transition: var(--transition-slow);
         }
-        
+
         .category-card:hover .category-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
-        
+
         .category-card-content {
             padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
-        
+
         .category-card h3 {
             font-size: 1.5rem;
             margin-bottom: 0.75rem;
         }
-        
+
         .category-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
-        
+
         .category-count {
             color: var(--accent-gold);
             font-weight: 600;
@@ -443,31 +604,54 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
-        /* Features Section */
+
+        /* Modern Features Section */
+        .features-section {
+            background: var(--bg-dark);
+        }
+
         .feature-card {
             text-align: center;
-            padding: 2.5rem 2rem;
+            padding: 3rem 2rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             transition: var(--transition-medium);
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s, transform 0.8s, var(--transition-medium);
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
         .feature-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .feature-card:hover {
             border-color: rgba(212, 165, 116, 0.5);
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-        
+
         .feature-icon {
             width: 5rem;
             height: 5rem;
@@ -481,71 +665,70 @@
             color: var(--accent-gold);
             transition: var(--transition-medium);
         }
-        
+
         .feature-card:hover .feature-icon {
             background: rgba(212, 165, 116, 0.2);
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
         }
-        
+
         .feature-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .feature-card p {
             color: var(--text-muted);
             font-size: 1rem;
         }
-        
-        /* Stats Section */
-        .stats-section {
-            padding: 5rem 2rem;
-            background: rgba(26, 26, 26, 0.5);
+
+        /* Modern CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
             text-align: center;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(10, 10, 10, 0.95)), 
+                        url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200') center/cover no-repeat;
+            position: relative;
         }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(10, 10, 10, 0.9) 70%);
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
             margin: 0 auto;
         }
-        
-        .stat {
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s, transform 0.8s;
-        }
-        
-        .stat.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .stat-number {
+
+        .cta-content h2 {
             font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-            display: block;
+            margin-bottom: 1.5rem;
         }
-        
-        .stat-label {
-            font-size: 1rem;
+
+        .cta-content p {
+            font-size: 1.25rem;
             color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        /* Footer */
+
+        /* Modern Footer */
         footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
-            padding: 4rem 2rem 2rem;
+            padding: 5rem 2rem 2rem;
         }
-        
+
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -554,17 +737,18 @@
             gap: 3rem;
             margin-bottom: 3rem;
         }
-        
+
         .footer-section h3 {
             margin-bottom: 1.5rem;
             color: var(--accent-gold);
             font-size: 1.25rem;
+            font-weight: 700;
         }
-        
+
         .footer-section ul {
             list-style: none;
         }
-        
+
         .footer-section a {
             color: var(--text-muted);
             text-decoration: none;
@@ -574,20 +758,20 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 0; /* Better touch target */
+            padding: 0.5rem 0;
         }
-        
+
         .footer-section a:hover {
             color: var(--accent-gold);
             transform: translateX(5px);
         }
-        
+
         .social-links {
             display: flex;
             gap: 1rem;
             margin-top: 1.5rem;
         }
-        
+
         .social-link {
             display: flex;
             align-items: center;
@@ -599,13 +783,13 @@
             color: var(--text-muted);
             transition: var(--transition-medium);
         }
-        
+
         .social-link:hover {
             background: var(--accent-gold);
             color: var(--bg-dark);
             transform: translateY(-3px);
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -613,70 +797,51 @@
             color: var(--text-muted);
             font-size: 0.9rem;
         }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(212, 165, 116, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(212, 165, 116, 0);
-            }
-        }
-        
-        /* Responsive */
+
+        /* Responsive Design */
         @media (max-width: 1200px) {
-            .container {
-                max-width: 1140px;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .container {
-                max-width: 960px;
+            .hero-title {
+                font-size: 3.5rem;
             }
             
-            .hero h1 {
+            .hero-container {
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-title {
                 font-size: 3rem;
             }
             
+            .hero-visual {
+                height: 400px;
+                order: -1;
+            }
+            
+            .hero-image {
+                height: 350px;
+            }
+            
+            .hero-features {
+                justify-content: center;
+            }
+            
             .section-header h2 {
-                font-size: 2.5rem;
+                font-size: 3rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 3rem;
             }
         }
-        
+
         @media (max-width: 768px) {
-            .container {
-                max-width: 720px;
-                padding: 0 1.5rem;
-            }
-            
-            .hero {
-                padding: 12rem 1.5rem 6rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
             .nav-links {
                 display: none;
             }
@@ -685,20 +850,35 @@
                 display: block;
             }
             
-            .section-header h2 {
-                font-size: 2rem;
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
             }
             
             .btn {
-                padding: 0.875rem 2rem;
                 width: 100%;
                 max-width: 280px;
             }
             
-            .btn-container {
+            .hero-features {
                 flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+                gap: 1.5rem;
+            }
+            
+            .floating-card {
+                display: none;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
             }
             
             .grid-4 {
@@ -714,42 +894,38 @@
             }
             
             .feature-card {
-                padding: 2rem 1.5rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                padding: 2.5rem 1.5rem;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+            
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-content p {
+                font-size: 1.1rem;
+            }
         }
-        
+
         @media (max-width: 576px) {
-            .container {
-                max-width: 100%;
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-container {
                 padding: 0 1rem;
             }
             
-            .hero {
-                padding: 10rem 1rem 4rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-                line-height: 1.2;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 2rem;
+            .hero-badge {
+                font-size: 0.8rem;
             }
             
             .section {
-                padding: 4rem 1rem;
+                padding: 6rem 1rem;
             }
             
             .section-header {
@@ -757,7 +933,7 @@
             }
             
             .section-header h2 {
-                font-size: 1.75rem;
+                font-size: 2rem;
             }
             
             .section-header p {
@@ -772,17 +948,8 @@
                 font-size: 1.25rem;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
             footer {
-                padding: 3rem 1rem 1.5rem;
+                padding: 4rem 1rem 1.5rem;
             }
             
             .nav-container {
@@ -791,20 +958,41 @@
             
             .mobile-nav {
                 padding: 5rem 1.5rem 2rem;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            .hero h1 {
-                font-size: 1.75rem;
+                width: 90%;
             }
             
-            .logo {
+            .logo-text {
                 font-size: 1.5rem;
             }
             
-            .logo-icon {
-                font-size: 1.25rem;
+            .logo-img {
+                height: 35px;
+            }
+            
+            .cta-section {
+                padding: 6rem 1rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .logo-img {
+                height: 30px;
             }
             
             .category-image {
@@ -814,12 +1002,13 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Modern Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-cubes logo-icon"></i>
-                Elite <span>Interior</span>
+            <a href="index.html" class="logo-container">
+                <!-- Replace with actual logo image -->
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaTTE4IDMzVjE5SDEwVjE3SDI2VjE5SDE4VjMzWiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4K" alt="Elite Interior Logo" class="logo-img">
+                <div class="logo-text">Elite <span>Interior</span></div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
@@ -838,38 +1027,89 @@
     <div class="overlay" id="overlay"></div>
     <div class="mobile-nav" id="mobileNav">
         <ul class="mobile-nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="products.html"><i class="fas fa-cube"></i> Products</a></li>
+            <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Premium Wall Panels for<br><span class="accent">Exceptional Spaces</span></h1>
-            <p>Transform your interior with Albania's finest collection of luxury wall panels. From elegant wooden slats to sophisticated MDF finishes.</p>
-            <div class="btn-container">
-                <a href="products.html" class="btn btn-primary">
-                    <span>Explore Products</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="contact.html" class="btn btn-secondary">
-                    <span>Get Quote</span>
-                    <i class="fas fa-comment"></i>
-                </a>
+    <!-- COMPLETELY REDESIGNED HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="bg-element"></div>
+            <div class="bg-element"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i> PREMIUM WALL SOLUTIONS
+                </div>
+                
+                <h1 class="hero-title">Transform Your Space With Elegant Wall Panels</h1>
+                
+                <p class="hero-subtitle">
+                    Discover Albania's finest collection of luxury wall panels. Elevate your interior with elegant designs, premium quality materials, and custom solutions tailored to your vision.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="products.html" class="btn btn-primary">
+                        <span>Explore Collections</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        <span>Book Consultation</span>
+                        <i class="fas fa-calendar-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="feature-text">
+                            <strong>Premium Quality</strong>
+                            Certified Materials
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck-fast"></i>
+                        </div>
+                        <div class="feature-text">
+                            <strong>Fast Delivery</strong>
+                            Across Albania
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800" alt="Luxury Interior with Wall Panels" class="hero-image">
+                
+                <div class="floating-card">
+                    <div class="card-title">Custom Solutions</div>
+                    <div class="card-text">Tailored to your space and style preferences</div>
+                </div>
+                
+                <div class="floating-card">
+                    <div class="card-title">30+ Designs</div>
+                    <div class="card-text">Wide variety of premium wall panel options</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Categories Section -->
-    <section class="section" style="background: rgba(26, 26, 26, 0.3);">
+    <section class="section categories-section">
         <div class="container">
             <div class="section-header" id="categories-header">
-                <h2>Shop by <span class="accent">Collection</span></h2>
-                <p>Explore our curated collections of premium wall panels, each designed to transform your space</p>
+                <h2>Our <span style="color: var(--accent-gold);">Premium Collections</span></h2>
+                <p>Explore our carefully curated selection of wall panels, each designed to transform your space with elegance and sophistication</p>
             </div>
             
             <div class="grid grid-4">
@@ -925,10 +1165,10 @@
     </section>
 
     <!-- Features Section -->
-    <section class="section">
+    <section class="section features-section">
         <div class="container">
             <div class="section-header" id="features-header">
-                <h2>Why Choose <span class="accent">Elite Interior</span></h2>
+                <h2>Why Choose <span style="color: var(--accent-gold);">Elite Interior</span></h2>
                 <p>Experience the difference with our premium products and exceptional service</p>
             </div>
             
@@ -960,133 +1200,124 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat">
-                    <span class="stat-number">500+</span>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">30+</span>
-                    <div class="stat-label">Products</div>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">1000+</span>
-                    <div class="stat-label">Projects</div>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">100%</span>
-                    <div class="stat-label">Satisfaction</div>
-                </div>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Space?</h2>
+            <p>Contact us today for a free consultation and discover how our premium wall panels can elevate your interior</p>
+            <div class="btn-container">
+                <a href="contact.html" class="btn btn-primary">
+                    <span>Get Free Quote</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="gallery.html" class="btn btn-secondary">
+                    <span>View Gallery</span>
+                    <i class="fas fa-images"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Elite Interior</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Albania's premier provider of luxury wall panels and interior solutions.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-pinterest"></i>
-                    </a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Elite Interior</h3>
+                    <p>Premium wall panels for exceptional spaces across Albania. Transforming interiors with quality, style, and innovation.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Slat Wall Panels</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> High Gloss MDF</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Soft Touch MDF</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Techno Matt MDF</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Tirana, Albania</a></li>
+                        <li><a href="tel:+35512345678"><i class="fas fa-phone"></i> +355 12 345 678</a></li>
+                        <li><a href="mailto:info@eliteinterior.al"><i class="fas fa-envelope"></i> info@eliteinterior.al</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</a></li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
-                    <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Elite Interior. All rights reserved.</p>
             </div>
-            
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <ul>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Rruga e Durrësit, Tirana</a></li>
-                    <li><a href="tel:+355690000000"><i class="fas fa-phone"></i> +355 69 XXX XXXX</a></li>
-                    <li><a href="mailto:info@eliteinterior.al"><i class="fas fa-envelope"></i> info@eliteinterior.al</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Elite Interior. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
         });
-
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        const overlay = document.getElementById('overlay');
         
-        function toggleMobileMenu() {
-            mobileNav.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-        }
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
         
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        overlay.addEventListener('click', toggleMobileMenu);
-        
-        // Close mobile menu when clicking on a link
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', toggleMobileMenu);
-        });
-
-        // Scroll animation for elements
-        function isElementInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return (
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85
-            );
-        }
-
-        function handleScrollAnimation() {
-            const elements = document.querySelectorAll('.section-header, .category-card, .feature-card, .stat');
-            
-            elements.forEach(element => {
-                if (isElementInViewport(element)) {
-                    element.classList.add('visible');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        }
-
-        // Initialize scroll animation
-        window.addEventListener('scroll', handleScrollAnimation);
-        window.addEventListener('load', handleScrollAnimation);
+        }, observerOptions);
         
-        // Initial check on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            handleScrollAnimation();
+        // Observe elements for animation
+        const elementsToObserve = document.querySelectorAll('.section-header, .category-card, .feature-card');
+        elementsToObserve.forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
