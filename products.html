@@ -3,1373 +3,932 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Elite Interior | Premium Wall Panels</title>
-    <meta name="description" content="Browse our complete collection of 30+ premium wall panels including slat, high gloss, soft touch, and techno matt finishes with multiple color options.">
+    <title>Products | Darkwood Panels</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Base Styles */
+        :root {
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --accent: #8B4513;
+            --accent-light: #a05a2c;
+            --text: #e0e0e0;
+            --text-light: #a0a0a0;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            --bg-dark: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-muted: #a0a0a0;
-            --accent-gold: #d4a574;
-            --accent-gold-light: #e6b98a;
-            --border-color: #2a2a2a;
-            --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-medium: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        html {
+            scroll-behavior: smooth;
         }
-        
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            line-height: 1.1;
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
         }
-        
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         .container {
-            max-width: 1400px;
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
-        
-        /* Modern Navigation */
-        nav {
-            position: fixed;
+
+        .section {
+            padding: 2.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 0.5rem auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--darker-bg);
+            position: sticky;
+            width: 100%;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            padding: 1.2rem 0;
-            transition: var(--transition-medium);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-        
-        nav.scrolled {
-            padding: 0.8rem 0;
-            background: rgba(10, 10, 10, 0.98);
-        }
-        
-        .nav-container {
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0.8rem 1rem;
         }
-        
-        .logo-container {
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
         }
-        
-        .logo-img {
-            height: 40px;
-            width: auto;
-            display: block;
+
+        .logo i {
+            color: var(--accent);
+            margin-right: 0.5rem;
         }
-        
-        .logo-text {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            transition: var(--transition-medium);
-        }
-        
-        .logo-text span {
-            color: var(--accent-gold);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: var(--transition-medium);
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gold);
-            transition: var(--transition-medium);
-        }
-        
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .nav-links a.active {
-            color: var(--accent-gold);
-        }
-        
-        .nav-links a.active::after {
-            width: 100%;
-        }
-        
-        /* Mobile Navigation */
-        .mobile-menu-btn {
-            display: none;
+
+        .nav-toggle {
             background: none;
             border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
+            color: var(--white);
+            font-size: 1.3rem;
             cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-            transition: var(--transition-medium);
-        }
-        
-        .mobile-menu-btn:hover {
-            color: var(--accent-gold);
-        }
-        
-        .mobile-nav {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 320px;
-            height: 100vh;
-            background: var(--bg-dark);
-            border-left: 1px solid var(--border-color);
-            z-index: 1000;
-            padding: 5rem 2rem 2rem;
-            transition: var(--transition-medium);
-            overflow-y: auto;
-        }
-        
-        .mobile-nav.active {
-            right: 0;
-        }
-        
-        .mobile-nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .mobile-nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
             display: block;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            transition: var(--transition-medium);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
         }
-        
-        .mobile-nav-links a i {
-            width: 20px;
-            text-align: center;
-        }
-        
-        .mobile-nav-links a:hover,
-        .mobile-nav-links a.active {
-            color: var(--accent-gold);
-            background: rgba(212, 165, 116, 0.1);
-        }
-        
-        .overlay {
+
+        .nav-menu {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            top: 60px;
+            left: -100%;
+            width: 80%;
+            height: calc(100vh - 60px);
+            background-color: var(--darker-bg);
+            transition: left 0.3s ease;
+            padding: 1.5rem 1rem;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
             z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition-medium);
         }
-        
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* Modern Page Header */
-        .page-header {
-            padding: 10rem 2rem 6rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
+
+        .nav-menu.active {
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(10, 10, 10, 0.9) 70%);
-            z-index: 1;
         }
-        
-        .page-header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
+
+        .nav-list {
+            list-style: none;
         }
-        
+
+        .nav-item {
+            margin-bottom: 1rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3') center/cover no-repeat;
+            padding: 6rem 0 3rem;
+            text-align: center;
+        }
+
         .page-header h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2.2rem;
+            color: var(--white);
+            margin-bottom: 1rem;
         }
-        
+
         .page-header p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
+            color: var(--text-light);
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.6;
         }
-        
-        /* Modern Filters */
-        .filters-section {
-            padding: 2rem 2rem;
-            position: sticky;
-            top: 70px;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 50;
+
+        /* Filters Section - Not sticky on mobile */
+        .filters {
+            background-color: var(--darker-bg);
+            padding: 1.5rem 0;
         }
-        
-        .filter-tabs {
+
+        /* Make filters sticky only on larger screens */
+        @media (min-width: 768px) {
+            .filters {
+                position: sticky;
+                top: 60px;
+                z-index: 999;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .filter-container {
             display: flex;
-            gap: 1rem;
             flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .filter-tab {
-            padding: 0.75rem 1.5rem;
-            background: rgba(26, 26, 26, 0.5);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            cursor: pointer;
-            border-radius: 0.75rem;
-            transition: var(--transition-medium);
-            white-space: nowrap;
-            font-weight: 500;
-            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
         }
-        
-        .filter-tab:hover,
-        .filter-tab.active {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            border-color: var(--accent-gold);
-            transform: translateY(-2px);
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        
-        .filter-tab i {
+
+        .filter-select {
+            background-color: var(--card-bg);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 200px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.5rem 2.5rem 0.5rem 1rem;
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text);
             font-size: 0.9rem;
         }
-        
-        /* Modern Products Grid */
-        .products-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-secondary));
+
+        .search-box i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
         }
-        
+
+        /* Products Grid - 2 columns on mobile */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
-        
+
+        @media (min-width: 576px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.2rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
         .product-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            transition: var(--transition-medium);
-            cursor: pointer;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        
-        .product-card:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        .product-image-container {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-        }
-        
+
         .product-image {
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 0.8rem;
+            position: relative;
+            height: 160px;
+        }
+
+        .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition-slow);
+            transition: transform 0.5s ease;
         }
-        
-        .product-card:hover .product-image {
+
+        .product-card:hover .product-image img {
             transform: scale(1.05);
         }
-        
-        .product-color-options {
-            position: absolute;
-            bottom: 1rem;
-            left: 0;
-            right: 0;
+
+        .product-info {
+            flex-grow: 1;
             display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 0 1rem;
+            flex-direction: column;
         }
-        
+
+        .product-info h3 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            flex-grow: 1;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 0.4rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+
         .color-option {
-            width: 28px;
-            height: 28px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            transition: var(--transition-medium);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
         }
-        
-        .color-option:hover {
+
+        .color-option:hover, .color-option.active {
             transform: scale(1.2);
+            border-color: var(--white);
         }
-        
-        .color-option.active {
-            border-color: var(--accent-gold);
-            transform: scale(1.2);
-        }
-        
-        .product-content {
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .product-category {
-            font-size: 0.75rem;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .product-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-        
-        .product-specs {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-        
-        .product-price {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            margin-top: 1rem;
-        }
-        
+
         .product-actions {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.5rem;
         }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.875rem 1.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 0.75rem;
-            transition: var(--transition-medium);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.9rem;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
+
+        .product-actions .btn {
             flex: 1;
+            padding: 0.6rem 0.5rem;
+            font-size: 0.8rem;
         }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: var(--transition-medium);
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
         }
-        
-        .btn:hover::before {
-            left: 100%;
+
+        .page-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--card-bg);
+            color: var(--text);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
-        
-        .btn-primary {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+
+        .page-btn:hover, .page-btn.active {
+            background-color: var(--accent);
+            color: var(--white);
         }
-        
-        .btn-primary:hover {
-            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.5);
-            transform: translateY(-3px);
-            background: var(--accent-gold-light);
-        }
-        
-        .btn-secondary {
-            border: 2px solid var(--accent-gold);
-            color: var(--text-primary);
-            background: transparent;
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(212, 165, 116, 0.1);
-            transform: translateY(-3px);
-        }
-        
-        /* Modern Footer */
+
+        /* Footer */
         footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            padding: 5rem 2rem 2rem;
+            background-color: var(--darker-bg);
+            padding: 2rem 0 1rem;
+            margin-top: 3rem;
         }
-        
+
         .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-section h3 {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
-            color: var(--accent-gold);
-            font-size: 1.25rem;
-            font-weight: 700;
         }
-        
-        .footer-section ul {
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
             list-style: none;
         }
-        
-        .footer-section a {
-            color: var(--text-muted);
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
             text-decoration: none;
-            display: block;
-            margin-bottom: 0.75rem;
-            transition: var(--transition-medium);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
         }
-        
-        .footer-section a:hover {
-            color: var(--accent-gold);
-            transform: translateX(5px);
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
-        
+
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
         }
-        
-        .social-link {
+
+        .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.05);
+            width: 36px;
+            height: 36px;
+            background-color: var(--card-bg);
+            color: var(--text);
             border-radius: 50%;
-            color: var(--text-muted);
-            transition: var(--transition-medium);
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
-        
-        .social-link:hover {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--white);
             transform: translateY(-3px);
         }
-        
+
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 0.8rem;
         }
-        
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
         }
-        
-        @media (max-width: 992px) {
-            .page-header h1 {
-                font-size: 3rem;
-            }
-            
-            .page-header p {
-                font-size: 1.1rem;
-            }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
         }
-        
-        @media (max-width: 768px) {
-            .nav-links {
+
+        .back-to-top:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-5px);
+        }
+
+        /* Mobile Navigation */
+        @media (min-width: 768px) {
+            .nav-toggle {
                 display: none;
             }
             
-            .mobile-menu-btn {
-                display: block;
+            .nav-menu {
+                position: static;
+                width: auto;
+                height: auto;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                display: flex;
             }
             
-            .page-header {
-                padding: 8rem 1rem 4rem;
+            .nav-list {
+                display: flex;
+                gap: 1.2rem;
             }
             
-            .page-header h1 {
-                font-size: 2.5rem;
+            .nav-item {
+                margin-bottom: 0;
             }
             
-            .filters-section {
-                padding: 1.5rem 1rem;
-                top: 60px;
-            }
-            
-            .filter-tabs {
-                gap: 0.5rem;
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 0.5rem;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-            
-            .filter-tabs::-webkit-scrollbar {
-                display: none;
-            }
-            
-            .filter-tab {
-                padding: 0.75rem 1.25rem;
-                font-size: 0.9rem;
-                flex-shrink: 0;
-            }
-            
-            .products-section {
-                padding: 2rem 1rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .product-card {
-                margin-bottom: 0.5rem;
-            }
-            
-            .product-image-container {
-                height: 260px;
-            }
-            
-            .product-content {
-                padding: 1.5rem;
-            }
-            
-            .product-name {
-                font-size: 1.3rem;
-            }
-            
-            .product-price {
-                font-size: 1.5rem;
-            }
-            
-            .color-option {
-                width: 32px;
-                height: 32px;
-            }
-            
-            footer {
-                padding: 3rem 1rem 1.5rem;
+            .nav-link {
+                border-bottom: none;
+                padding: 0;
             }
             
             .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .nav-container {
-                padding: 0 1rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .page-header {
-                padding: 7rem 1rem 3rem;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .filters-section {
-                padding: 1rem;
-            }
-            
-            .filter-tab {
-                padding: 0.75rem 1rem;
-                font-size: 0.85rem;
-            }
-            
-            .products-section {
-                padding: 1.5rem 0.5rem;
-            }
-            
-            .product-image-container {
-                height: 240px;
-            }
-            
-            .product-content {
-                padding: 1.25rem;
-            }
-            
-            .product-name {
-                font-size: 1.2rem;
-            }
-            
-            .product-specs {
-                font-size: 0.85rem;
-            }
-            
-            .product-price {
-                font-size: 1.4rem;
-            }
-            
-            .product-actions {
-                flex-direction: column;
-            }
-            
-            .mobile-nav {
-                padding: 5rem 1.5rem 2rem;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem;
-            }
-            
-            .logo-img {
-                height: 35px;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            .page-header h1 {
-                font-size: 1.75rem;
-            }
-            
-            .logo-text {
-                font-size: 1.4rem;
-            }
-            
-            .logo-img {
-                height: 30px;
-            }
-            
-            .product-image-container {
-                height: 220px;
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Modern Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo-container">
-                <!-- Replace with actual logo image -->
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaTTE4IDMzVjE5SDEwVjE3SDI2VjE5SDE4VjMzWiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4K" alt="Elite Interior Logo" class="logo-img">
-                <div class="logo-text">Elite <span>Interior</span></div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-border-all"></i>
+                Darkwood Panels
             </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html" class="active">Products</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="nav-toggle" id="navToggle">
                 <i class="fas fa-bars"></i>
             </button>
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+                    <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Mobile Navigation -->
-    <div class="overlay" id="overlay"></div>
-    <div class="mobile-nav" id="mobileNav">
-        <ul class="mobile-nav-links">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="products.html" class="active"><i class="fas fa-cube"></i> Products</a></li>
-            <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
-            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-        </ul>
-    </div>
-
-    <!-- Modern Page Header -->
+    <!-- Page Header -->
     <section class="page-header">
-        <div class="page-header-content">
-            <h1>Our <span style="color: var(--accent-gold);">Premium Collections</span></h1>
-            <p>Discover our complete collection of premium wall panels. Each product is carefully crafted to bring elegance and functionality to your space.</p>
+        <div class="container">
+            <h1>Our Product Collection</h1>
+            <p>Browse our complete range of premium wall panels in various styles, textures, and colors</p>
         </div>
     </section>
 
-    <!-- Modern Filters -->
-    <div class="filters-section">
-        <div class="container">
-            <div class="filter-tabs">
-                <button class="filter-tab active" onclick="filterProducts('all')">
-                    <i class="fas fa-th-large"></i>
-                    All Products (30)
-                </button>
-                <button class="filter-tab" onclick="filterProducts('slat')">
-                    <i class="fas fa-border-style"></i>
-                    Slat Wall (8)
-                </button>
-                <button class="filter-tab" onclick="filterProducts('gloss')">
-                    <i class="fas fa-sun"></i>
-                    High Gloss (8)
-                </button>
-                <button class="filter-tab" onclick="filterProducts('soft')">
-                    <i class="fas fa-hand-paper"></i>
-                    Soft Touch (8)
-                </button>
-                <button class="filter-tab" onclick="filterProducts('techno')">
-                    <i class="fas fa-square"></i>
-                    Techno Matt (6)
-                </button>
+    <!-- Filters Section -->
+    <section class="filters">
+        <div class="container filter-container">
+            <div class="filter-group">
+                <select class="filter-select" id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="wood">Wood Panels</option>
+                    <option value="3d">3D Panels</option>
+                    <option value="textured">Textured Panels</option>
+                </select>
+                <select class="filter-select" id="colorFilter">
+                    <option value="">All Colors</option>
+                    <option value="brown">Brown</option>
+                    <option value="gray">Gray</option>
+                    <option value="white">White</option>
+                </select>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <i class="fas fa-search"></i>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Modern Products Grid -->
-    <section class="products-section">
-        <div class="products-grid" id="productsGrid">
-            <!-- Products will be loaded here by JavaScript -->
+    <!-- Products Section -->
+    <section class="section">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Product cards will be generated by JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination buttons will be generated by JavaScript -->
+            </div>
         </div>
     </section>
 
-    <!-- Modern Footer -->
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Elite Interior</h3>
-                    <p>Premium wall panels for exceptional spaces across Albania. Transforming interiors with quality, style, and innovation.</p>
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-border-all"></i>
+                        Darkwood Panels
+                    </a>
+                    <p>Premium wall panel solutions for residential and commercial spaces</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-section">
+                <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
-                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Products</h3>
-                    <ul>
-                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Slat Wall Panels</a></li>
-                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> High Gloss MDF</a></li>
-                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Soft Touch MDF</a></li>
-                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Techno Matt MDF</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
+                <div class="footer-contact">
                     <h3>Contact Info</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Tirana, Albania</a></li>
-                        <li><a href="tel:+35512345678"><i class="fas fa-phone"></i> +355 12 345 678</a></li>
-                        <li><a href="mailto:info@eliteinterior.al"><i class="fas fa-envelope"></i> info@eliteinterior.al</a></li>
-                        <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</a></li>
-                    </ul>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Design Street</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@darkwoodpanels.com</p>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2023 Elite Interior. All rights reserved.</p>
+                <p>&copy; 2023 Darkwood Panels. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Product data
-        const products = [
-            { 
-                name: "Oak Slat Panel", 
-                category: "Slat Wall Panels", 
-                type: "slat", 
-                price: "45", 
-                specs: "18.6cm x 2.5cm x 290cm",
-                colors: [
-                    { name: "Natural Oak", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#d4b896" },
-                    { name: "Dark Oak", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#5d4037" },
-                    { name: "Gray Oak", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#8d6e63" }
-                ]
-            },
-            { 
-                name: "Walnut Slat Panel", 
-                category: "Slat Wall Panels", 
-                type: "slat", 
-                price: "48", 
-                specs: "18.6cm x 2.5cm x 290cm",
-                colors: [
-                    { name: "Rich Walnut", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#5d4037" },
-                    { name: "Light Walnut", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#a1887f" },
-                    { name: "Smoked Walnut", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#4e342e" }
-                ]
-            },
-            { 
-                name: "Ash Slat Panel", 
-                category: "Slat Wall Panels", 
-                type: "slat", 
-                price: "42", 
-                specs: "18.6cm x 2.5cm x 290cm",
-                colors: [
-                    { name: "Natural Ash", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#e0e0e0" },
-                    { name: "White Ash", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#f5f5f5" },
-                    { name: "Gray Ash", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#9e9e9e" }
-                ]
-            },
-            { 
-                name: "Teak Slat Panel", 
-                category: "Slat Wall Panels", 
-                type: "slat", 
-                price: "52", 
-                specs: "18.6cm x 2.5cm x 290cm",
-                colors: [
-                    { name: "Golden Teak", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#bcaaa4" },
-                    { name: "Dark Teak", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#6d4c41" },
-                    { name: "Natural Teak", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#8d6e63" }
-                ]
-            },
-            { 
-                name: "Pine Slat Panel", 
-                category: "Slat Wall Panels", 
-                type: "slat", 
-                price: "38", 
-                specs: "18.6cm x 2.5cm x 290cm",
-                colors: [
-                    { name: "Natural Pine", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#d7ccc8" },
-                    { name: "Light Pine", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#efebe9" },
-                    { name: "Honey Pine", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#bcaaa4" }
-                ]
-            },
-            { 
-                name: "Maple Slat Panel", 
-                category: "Slat Wall Panels", 
-                type: "slat", 
-                price: "46", 
-                specs: "18.6cm x 2.5cm x 290cm",
-                colors: [
-                    { name: "Natural Maple", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#e0e0e0" },
-                    { name: "White Maple", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#f5f5f5" },
-                    { name: "Gray Maple", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#9e9e9e" }
-                ]
-            },
-            { 
-                name: "Cherry Slat Panel", 
-                category: "Slat Wall Panels", 
-                type: "slat", 
-                price: "50", 
-                specs: "18.6cm x 2.5cm x 290cm",
-                colors: [
-                    { name: "Rich Cherry", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#5d4037" },
-                    { name: "Dark Cherry", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#3e2723" },
-                    { name: "Natural Cherry", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#6d4c41" }
-                ]
-            },
-            { 
-                name: "Mahogany Slat Panel", 
-                category: "Slat Wall Panels", 
-                type: "slat", 
-                price: "55", 
-                specs: "18.6cm x 2.5cm x 290cm",
-                colors: [
-                    { name: "Dark Mahogany", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=400", colorCode: "#3e2723" },
-                    { name: "Rich Mahogany", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400", colorCode: "#4e342e" },
-                    { name: "Natural Mahogany", image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400", colorCode: "#5d4037" }
-                ]
-            },
-            
-            { 
-                name: "Gloss White Panel", 
-                category: "High Gloss MDF Panels", 
-                type: "gloss", 
-                price: "35", 
-                specs: "60cm x 0.9cm",
-                colors: [
-                    { name: "Pure White", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#ffffff" },
-                    { name: "Pearl White", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#f5f5f5" },
-                    { name: "Ivory White", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#f8f8f8" }
-                ]
-            },
-            { 
-                name: "Gloss Black Panel", 
-                category: "High Gloss MDF Panels", 
-                type: "gloss", 
-                price: "35", 
-                specs: "60cm x 0.9cm",
-                colors: [
-                    { name: "Jet Black", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#000000" },
-                    { name: "Charcoal Black", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#212121" },
-                    { name: "Graphite Black", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#424242" }
-                ]
-            },
-            { 
-                name: "Gloss Red Panel", 
-                category: "High Gloss MDF Panels", 
-                type: "gloss", 
-                price: "38", 
-                specs: "60cm x 0.9cm",
-                colors: [
-                    { name: "Crimson Red", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#d32f2f" },
-                    { name: "Burgundy Red", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#c2185b" },
-                    { name: "Ruby Red", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#e53935" }
-                ]
-            },
-            { 
-                name: "Gloss Blue Panel", 
-                category: "High Gloss MDF Panels", 
-                type: "gloss", 
-                price: "38", 
-                specs: "60cm x 0.9cm",
-                colors: [
-                    { name: "Navy Blue", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#1976d2" },
-                    { name: "Royal Blue", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#303f9f" },
-                    { name: "Sapphire Blue", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#2962ff" }
-                ]
-            },
-            { 
-                name: "Gloss Green Panel", 
-                category: "High Gloss MDF Panels", 
-                type: "gloss", 
-                price: "38", 
-                specs: "60cm x 0.9cm",
-                colors: [
-                    { name: "Emerald Green", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#388e3c" },
-                    { name: "Forest Green", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#2e7d32" },
-                    { name: "Jade Green", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#4caf50" }
-                ]
-            },
-            { 
-                name: "Gloss Gray Panel", 
-                category: "High Gloss MDF Panels", 
-                type: "gloss", 
-                price: "36", 
-                specs: "60cm x 0.9cm",
-                colors: [
-                    { name: "Silver Gray", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#9e9e9e" },
-                    { name: "Charcoal Gray", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#616161" },
-                    { name: "Slate Gray", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#757575" }
-                ]
-            },
-            { 
-                name: "Gloss Cream Panel", 
-                category: "High Gloss MDF Panels", 
-                type: "gloss", 
-                price: "37", 
-                specs: "60cm x 0.9cm",
-                colors: [
-                    { name: "Vanilla Cream", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#f5f5dc" },
-                    { name: "Ivory Cream", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#fffff0" },
-                    { name: "Beige Cream", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#f5f5f5" }
-                ]
-            },
-            { 
-                name: "Gloss Beige Panel", 
-                category: "High Gloss MDF Panels", 
-                type: "gloss", 
-                price: "37", 
-                specs: "60cm x 0.9cm",
-                colors: [
-                    { name: "Sand Beige", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400", colorCode: "#f5deb3" },
-                    { name: "Taupe Beige", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400", colorCode: "#d2b48c" },
-                    { name: "Cream Beige", image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400", colorCode: "#f5f5dc" }
-                ]
-            },
-            
-            { 
-                name: "Soft Touch Black", 
-                category: "Soft Touch MDF Panels", 
-                type: "soft", 
-                price: "40", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Matte Black", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#212121" },
-                    { name: "Charcoal Black", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#424242" },
-                    { name: "Graphite Black", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#37474f" }
-                ]
-            },
-            { 
-                name: "Soft Touch White", 
-                category: "Soft Touch MDF Panels", 
-                type: "soft", 
-                price: "40", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Matte White", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#fafafa" },
-                    { name: "Pearl White", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#f5f5f5" },
-                    { name: "Ivory White", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#fffff0" }
-                ]
-            },
-            { 
-                name: "Soft Touch Gray", 
-                category: "Soft Touch MDF Panels", 
-                type: "soft", 
-                price: "40", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Stone Gray", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#9e9e9e" },
-                    { name: "Silver Gray", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#bdbdbd" },
-                    { name: "Slate Gray", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#607d8b" }
-                ]
-            },
-            { 
-                name: "Soft Touch Navy", 
-                category: "Soft Touch MDF Panels", 
-                type: "soft", 
-                price: "42", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Deep Navy", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#0d47a1" },
-                    { name: "Midnight Navy", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#1565c0" },
-                    { name: "Royal Navy", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#1976d2" }
-                ]
-            },
-            { 
-                name: "Soft Touch Anthracite", 
-                category: "Soft Touch MDF Panels", 
-                type: "soft", 
-                price: "42", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Dark Anthracite", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#263238" },
-                    { name: "Medium Anthracite", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#37474f" },
-                    { name: "Light Anthracite", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#455a64" }
-                ]
-            },
-            { 
-                name: "Soft Touch Taupe", 
-                category: "Soft Touch MDF Panels", 
-                type: "soft", 
-                price: "41", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Warm Taupe", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#8d6e63" },
-                    { name: "Cool Taupe", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#a1887f" },
-                    { name: "Dark Taupe", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#6d4c41" }
-                ]
-            },
-            { 
-                name: "Soft Touch Sand", 
-                category: "Soft Touch MDF Panels", 
-                type: "soft", 
-                price: "41", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Beige Sand", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#d7ccc8" },
-                    { name: "Warm Sand", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#bcaaa4" },
-                    { name: "Light Sand", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#efebe9" }
-                ]
-            },
-            { 
-                name: "Soft Touch Charcoal", 
-                category: "Soft Touch MDF Panels", 
-                type: "soft", 
-                price: "43", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Deep Charcoal", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400", colorCode: "#424242" },
-                    { name: "Medium Charcoal", image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400", colorCode: "#616161" },
-                    { name: "Light Charcoal", image: "https://images.unsplash.com/photo-1591607388347-9ce40e49b8c1?w=400", colorCode: "#757575" }
-                ]
-            },
-            
-            { 
-                name: "Techno Matt Gray", 
-                category: "Techno Matt MDF Panels", 
-                type: "techno", 
-                price: "38", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Graphite Gray", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#37474f" },
-                    { name: "Slate Gray", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#455a64" },
-                    { name: "Stone Gray", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#546e7a" }
-                ]
-            },
-            { 
-                name: "Techno Matt White", 
-                category: "Techno Matt MDF Panels", 
-                type: "techno", 
-                price: "38", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Pure White", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#ffffff" },
-                    { name: "Pearl White", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#f5f5f5" },
-                    { name: "Ivory White", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#fffff0" }
-                ]
-            },
-            { 
-                name: "Techno Matt Black", 
-                category: "Techno Matt MDF Panels", 
-                type: "techno", 
-                price: "38", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Jet Black", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#000000" },
-                    { name: "Charcoal Black", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#212121" },
-                    { name: "Graphite Black", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#263238" }
-                ]
-            },
-            { 
-                name: "Techno Matt Beige", 
-                category: "Techno Matt MDF Panels", 
-                type: "techno", 
-                price: "39", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Sand Beige", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#d7ccc8" },
-                    { name: "Warm Beige", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#bcaaa4" },
-                    { name: "Light Beige", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#efebe9" }
-                ]
-            },
-            { 
-                name: "Techno Matt Blue", 
-                category: "Techno Matt MDF Panels", 
-                type: "techno", 
-                price: "40", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Navy Blue", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#0d47a1" },
-                    { name: "Steel Blue", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#1565c0" },
-                    { name: "Sky Blue", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#1976d2" }
-                ]
-            },
-            { 
-                name: "Techno Matt Green", 
-                category: "Techno Matt MDF Panels", 
-                type: "techno", 
-                price: "40", 
-                specs: "122cm x 280cm",
-                colors: [
-                    { name: "Forest Green", image: "https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=400", colorCode: "#2e7d32" },
-                    { name: "Olive Green", image: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?w=400", colorCode: "#558b2f" },
-                    { name: "Sage Green", image: "https://images.unsplash.com/photo-1629747490241-624f7d2d7456?w=400", colorCode: "#689f38" }
-                ]
-            }
-        ];
-
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        const overlay = document.getElementById('overlay');
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
         
-        function toggleMobileMenu() {
-            mobileNav.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-        }
-        
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        overlay.addEventListener('click', toggleMobileMenu);
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
         
         // Close mobile menu when clicking on a link
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', toggleMobileMenu);
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
         });
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Product data - 30 products with different colors
+        const products = [
+            { id: 1, name: "Classic Oak", category: "wood", colors: ["#8B4513", "#D2B48C", "#A0522D"], description: "Traditional oak wood panels" },
+            { id: 2, name: "Modern Gray 3D", category: "3d", colors: ["#808080", "#A9A9A9", "#696969"], description: "Contemporary 3D panels" },
+            { id: 3, name: "Textured White", category: "textured", colors: ["#FFFFFF", "#F5F5F5", "#E8E8E8"], description: "White panels with texture" },
+            { id: 4, name: "Walnut Finish", category: "wood", colors: ["#654321", "#8B6914", "#A52A2A"], description: "Rich walnut finish panels" },
+            { id: 5, name: "Geometric 3D", category: "3d", colors: ["#2F4F4F", "#708090", "#778899"], description: "Geometric pattern 3D panels" },
+            { id: 6, name: "Stone Texture", category: "textured", colors: ["#696969", "#808080", "#A9A9A9"], description: "Panels with stone texture" },
+            { id: 7, name: "Cherry Wood", category: "wood", colors: ["#8B0000", "#B22222", "#DC143C"], description: "Warm cherry wood panels" },
+            { id: 8, name: "Wave 3D", category: "3d", colors: ["#4682B4", "#5F9EA0", "#87CEEB"], description: "Wave pattern 3D panels" },
+            { id: 9, name: "Brick Texture", category: "textured", colors: ["#8B4513", "#A0522D", "#CD853F"], description: "Brick texture panels" },
+            { id: 10, name: "Maple Wood", category: "wood", colors: ["#DEB887", "#F5DEB3", "#FFE4B5"], description: "Light maple wood panels" },
+            { id: 11, name: "Hexagon 3D", category: "3d", colors: ["#2F4F4F", "#696969", "#808080"], description: "Hexagonal pattern 3D panels" },
+            { id: 12, name: "Concrete Texture", category: "textured", colors: ["#696969", "#778899", "#708090"], description: "Urban concrete texture" },
+            { id: 13, name: "Mahogany Panels", category: "wood", colors: ["#800000", "#8B0000", "#A52A2A"], description: "Luxurious mahogany panels" },
+            { id: 14, name: "Diamond 3D", category: "3d", colors: ["#2F4F4F", "#4682B4", "#5F9EA0"], description: "Diamond pattern 3D panels" },
+            { id: 15, name: "Leather Texture", category: "textured", colors: ["#8B4513", "#A0522D", "#D2691E"], description: "Leather texture panels" },
+            { id: 16, name: "Pine Wood", category: "wood", colors: ["#DAA520", "#B8860B", "#CD853F"], description: "Light pine wood panels" },
+            { id: 17, name: "Bubble 3D", category: "3d", colors: ["#4682B4", "#5F9EA0", "#87CEEB"], description: "Bubble pattern 3D panels" },
+            { id: 18, name: "Fabric Texture", category: "textured", colors: ["#F5F5DC", "#F5DEB3", "#FFE4C4"], description: "Fabric texture panels" },
+            { id: 19, name: "Teak Wood", category: "wood", colors: ["#D2B48C", "#F4A460", "#DEB887"], description: "Durable teak wood panels" },
+            { id: 20, name: "Linear 3D", category: "3d", colors: ["#696969", "#808080", "#A9A9A9"], description: "Linear pattern 3D panels" },
+            { id: 21, name: "Marble Texture", category: "textured", colors: ["#F5F5F5", "#E8E8E8", "#DCDCDC"], description: "Marble texture panels" },
+            { id: 22, name: "Ash Wood", category: "wood", colors: ["#D3D3D3", "#C0C0C0", "#A9A9A9"], description: "Light ash wood panels" },
+            { id: 23, name: "Organic 3D", category: "3d", colors: ["#2F4F4F", "#556B2F", "#6B8E23"], description: "Organic pattern 3D panels" },
+            { id: 24, name: "Metal Texture", category: "textured", colors: ["#C0C0C0", "#A9A9A9", "#808080"], description: "Metal texture panels" },
+            { id: 25, name: "Bamboo Panels", category: "wood", colors: ["#556B2F", "#6B8E23", "#9ACD32"], description: "Sustainable bamboo panels" },
+            { id: 26, name: "Cubic 3D", category: "3d", colors: ["#696969", "#808080", "#A9A9A9"], description: "Cubic pattern 3D panels" },
+            { id: 27, name: "Cork Texture", category: "textured", colors: ["#D2B48C", "#F4A460", "#DEB887"], description: "Cork texture panels" },
+            { id: 28, name: "Reclaimed Wood", category: "wood", colors: ["#8B4513", "#A0522D", "#CD853F"], description: "Reclaimed wood panels" },
+            { id: 29, name: "Abstract 3D", category: "3d", colors: ["#4682B4", "#5F9EA0", "#87CEEB"], description: "Abstract pattern 3D panels" },
+            { id: 30, name: "Weave Texture", category: "textured", colors: ["#F5F5DC", "#F5DEB3", "#FFE4C4"], description: "Woven texture panels" }
+        ];
 
-        // Function to render products
-        function renderProducts(productsToRender) {
+        // Function to generate product cards
+        function generateProductCards(productsToShow) {
             const productsGrid = document.getElementById('productsGrid');
             productsGrid.innerHTML = '';
             
-            productsToRender.forEach((product, index) => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.setAttribute('data-type', product.type);
+            productsToShow.forEach(product => {
+                const colorOptions = product.colors.map(color => 
+                    `<div class="color-option" style="background-color: ${color};" data-color="${color}"></div>`
+                ).join('');
                 
-                const firstColor = product.colors[0];
-                
-                productCard.innerHTML = `
-                    <div class="product-image-container">
-                        <img src="${firstColor.image}" alt="${product.name} - ${firstColor.name}" class="product-image" id="productImage-${index}">
-                        <div class="product-color-options">
-                            ${product.colors.map((color, colorIndex) => `
-                                <div class="color-option ${colorIndex === 0 ? 'active' : ''}" 
-                                     style="background-color: ${color.colorCode}"
-                                     data-image="${color.image}"
-                                     data-product-index="${index}"
-                                     data-color-index="${colorIndex}"></div>
-                            `).join('')}
+                const productCard = `
+                    <div class="product-card card" data-category="${product.category}" data-colors="${product.colors.join(',')}">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3" alt="${product.name}">
                         </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="product-category">${product.category}</div>
-                        <h3 class="product-name">${product.name}</h3>
-                        <div class="product-specs">${product.specs}</div>
-                        <div class="product-price">€${product.price}</div>
-                        <div class="product-actions">
-                            <a href="contact.html" class="btn btn-primary">
-                                <span>Get Quote</span>
-                                <i class="fas fa-comment"></i>
-                            </a>
-                            <a href="gallery.html" class="btn btn-secondary">
-                                <span>View Gallery</span>
-                                <i class="fas fa-images"></i>
-                            </a>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <div class="color-options">
+                                ${colorOptions}
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn">Details</button>
+                                <button class="btn btn-outline">Inquire</button>
+                            </div>
                         </div>
                     </div>
                 `;
                 
-                productsGrid.appendChild(productCard);
-            });
-            
-            // Add event listeners to color options
-            document.querySelectorAll('.color-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    const productIndex = this.getAttribute('data-product-index');
-                    const colorIndex = this.getAttribute('data-color-index');
-                    const imageUrl = this.getAttribute('data-image');
-                    
-                    // Update the product image
-                    document.getElementById(`productImage-${productIndex}`).src = imageUrl;
-                    
-                    // Update active state
-                    document.querySelectorAll(`[data-product-index="${productIndex}"]`).forEach(opt => {
-                        opt.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                });
+                productsGrid.innerHTML += productCard;
             });
         }
+
+        // Function to setup pagination
+        function setupPagination(totalPages) {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            // Previous button
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayProducts();
+                }
+            });
+            pagination.appendChild(prevBtn);
+            
+            // Page buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = 'page-btn';
+                pageBtn.textContent = i;
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    displayProducts();
+                });
+                pagination.appendChild(pageBtn);
+            }
+            
+            // Next button
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayProducts();
+                }
+            });
+            pagination.appendChild(nextBtn);
+        }
+
+        // Function to display products with pagination
+        let currentPage = 1;
+        const productsPerPage = 12;
         
-        // Function to filter products
-        function filterProducts(type) {
-            const filterTabs = document.querySelectorAll('.filter-tab');
-            filterTabs.forEach(tab => {
-                tab.classList.remove('active');
-                if (tab.textContent.includes(type.charAt(0).toUpperCase() + type.slice(1)) || 
-                    (type === 'all' && tab.textContent.includes('All Products'))) {
-                    tab.classList.add('active');
+        function displayProducts() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const colorFilter = document.getElementById('colorFilter').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            // Filter products based on selections
+            let filteredProducts = products.filter(product => {
+                const matchesCategory = !categoryFilter || product.category === categoryFilter;
+                const matchesColor = !colorFilter || product.colors.some(color => {
+                    const colorName = getColorName(color);
+                    return colorName === colorFilter;
+                });
+                const matchesSearch = !searchTerm || 
+                    product.name.toLowerCase().includes(searchTerm) || 
+                    product.description.toLowerCase().includes(searchTerm);
+                
+                return matchesCategory && matchesColor && matchesSearch;
+            });
+            
+            // Calculate pagination
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            setupPagination(totalPages);
+            
+            // Get products for current page
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+            
+            // Generate product cards
+            generateProductCards(productsToShow);
+            
+            // Update active page button
+            document.querySelectorAll('.page-btn').forEach((btn, index) => {
+                // Skip prev/next buttons (first and last)
+                if (index > 0 && index < totalPages + 1) {
+                    btn.classList.toggle('active', index === currentPage);
+                }
+            });
+        }
+
+        // Helper function to get color name from hex
+        function getColorName(hex) {
+            const colorMap = {
+                '#8B4513': 'brown',
+                '#D2B48C': 'beige',
+                '#A0522D': 'brown',
+                '#808080': 'gray',
+                '#A9A9A9': 'gray',
+                '#696969': 'gray',
+                '#FFFFFF': 'white',
+                '#F5F5F5': 'white',
+                '#E8E8E8': 'white',
+                '#654321': 'brown',
+                '#8B6914': 'brown',
+                '#A52A2A': 'brown',
+                '#2F4F4F': 'gray',
+                '#708090': 'gray',
+                '#778899': 'gray',
+                '#8B0000': 'brown',
+                '#B22222': 'brown',
+                '#DC143C': 'red',
+                '#4682B4': 'blue',
+                '#5F9EA0': 'blue',
+                '#87CEEB': 'blue',
+                '#DEB887': 'beige',
+                '#F5DEB3': 'beige',
+                '#FFE4B5': 'beige',
+                '#800000': 'brown',
+                '#DAA520': 'beige',
+                '#B8860B': 'beige',
+                '#CD853F': 'brown',
+                '#F5F5DC': 'beige',
+                '#FFE4C4': 'beige',
+                '#F4A460': 'beige',
+                '#D3D3D3': 'gray',
+                '#C0C0C0': 'gray',
+                '#556B2F': 'green',
+                '#6B8E23': 'green',
+                '#9ACD32': 'green',
+                '#000000': 'black'
+            };
+            
+            return colorMap[hex] || 'other';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProducts();
+            
+            // Add event listeners to filters
+            document.getElementById('categoryFilter').addEventListener('change', () => {
+                currentPage = 1;
+                displayProducts();
+            });
+            
+            document.getElementById('colorFilter').addEventListener('change', () => {
+                currentPage = 1;
+                displayProducts();
+            });
+            
+            document.getElementById('searchInput').addEventListener('input', () => {
+                currentPage = 1;
+                displayProducts();
+            });
+            
+            // Back to top functionality
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
                 }
             });
             
-            if (type === 'all') {
-                renderProducts(products);
-            } else {
-                const filteredProducts = products.filter(product => product.type === type);
-                renderProducts(filteredProducts);
-            }
-        }
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            renderProducts(products);
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
